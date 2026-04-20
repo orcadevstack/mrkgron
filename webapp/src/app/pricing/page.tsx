@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Fragment } from "react";
 import { ArrowRight, CheckCircle2, X, Zap } from "lucide-react";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
@@ -141,17 +142,18 @@ export default function PricingPage() {
       <Navbar />
       <main className="pt-16">
         {/* Hero */}
-        <section className="bg-hero-gradient hero-grid py-24 text-center relative overflow-hidden">
+        <section className="bg-hero-gradient hero-grid py-28 text-center relative overflow-hidden">
           <div className="orb w-80 h-80 bg-brand-accent/20 top-0 left-1/4" />
+          <div className="orb w-64 h-64 bg-brand-indigo/15 -bottom-20 -right-10" />
           <div className="relative z-10 max-w-3xl mx-auto px-4">
-            <span className="tag-pill bg-white/10 text-white/80 mb-6 inline-block">
+            <span className="tag-pill bg-white/10 text-white/80 mb-6 inline-block tracking-widest">
               Pricing
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mt-4">
+            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.08] tracking-[-0.03em] mt-4">
               Simple, transparent pricing.{" "}
               <span className="text-brand-gold">No surprises.</span>
             </h1>
-            <p className="mt-5 text-lg text-white/70">
+            <p className="mt-5 text-lg text-white/65 leading-relaxed">
               Start free, upgrade when you need to. Every plan includes a
               14-day free trial — no credit card required.
             </p>
@@ -174,7 +176,7 @@ export default function PricingPage() {
               {plans.map((plan) => (
                 <div
                   key={plan.name}
-                  className={`bg-white rounded-2xl border-2 ${plan.accentClass} p-8 flex flex-col ${
+                  className={`bg-white rounded-3xl border-2 ${plan.accentClass} p-8 flex flex-col ${
                     plan.featured ? "ring-2 ring-brand-accent/25 shadow-xl relative" : "shadow-sm"
                   }`}
                 >
@@ -211,7 +213,7 @@ export default function PricingPage() {
                     className={
                       plan.featured
                         ? "btn-primary text-center"
-                        : "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-slate-200 text-brand-dark font-semibold text-sm hover:border-brand-accent hover:text-brand-accent transition-colors text-center"
+                        : "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-slate-200 text-brand-dark font-semibold text-sm hover:border-brand-accent hover:text-brand-accent transition-colors text-center"
                     }
                   >
                     {plan.cta} <ArrowRight size={15} />
@@ -234,7 +236,7 @@ export default function PricingPage() {
               </p>
             </div>
 
-            <div className="min-w-full overflow-x-auto rounded-2xl border border-slate-100 shadow-sm">
+            <div className="min-w-full overflow-x-auto rounded-3xl border border-slate-100 shadow-sm">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-slate-100">
@@ -248,8 +250,8 @@ export default function PricingPage() {
                 </thead>
                 <tbody>
                   {Object.entries(featureMatrix).map(([category, rows]) => (
-                    <>
-                      <tr key={`cat-${category}`} className="bg-brand-light/60">
+                    <Fragment key={category}>
+                      <tr className="bg-brand-light/60">
                         <td colSpan={4} className="py-3 px-6 text-xs font-bold text-slate-400 uppercase tracking-wider">
                           {category}
                         </td>
@@ -264,7 +266,7 @@ export default function PricingPage() {
                           ))}
                         </tr>
                       ))}
-                    </>
+                    </Fragment>
                   ))}
                 </tbody>
               </table>
@@ -286,7 +288,7 @@ export default function PricingPage() {
               <Link href="/contact#demo" className="btn-primary text-base px-8 py-3.5">
                 Talk to Sales <ArrowRight size={16} />
               </Link>
-              <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg border border-brand-accent text-brand-accent font-semibold text-base hover:bg-brand-accent/5 transition-colors">
+              <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border border-brand-accent text-brand-accent font-semibold text-base hover:bg-brand-accent/5 transition-colors">
                 Contact Support
               </Link>
             </div>

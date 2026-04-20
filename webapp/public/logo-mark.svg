@@ -1,0 +1,12 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="12" fill="url(#lcm-gradient)"/>
+  <defs>
+    <linearGradient id="lcm-gradient" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="28" width="7" height="11" rx="2" fill="rgba(255,255,255,0.55)"/>
+  <rect x="20.5" y="19" width="7" height="20" rx="2" fill="rgba(255,255,255,0.78)"/>
+  <rect x="31" y="9" width="7" height="30" rx="2" fill="white"/>
+</svg>

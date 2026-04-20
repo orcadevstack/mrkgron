@@ -25,13 +25,13 @@ function HeroSection() {
       <div className="orb w-[500px] h-[500px] bg-brand-indigo/20 -bottom-40 -right-40" />
       <div className="orb w-[300px] h-[300px] bg-brand-cyan/10 top-1/3 right-1/4" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/80 text-xs font-semibold tracking-wide uppercase mb-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-24 text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/80 text-xs font-semibold tracking-widest uppercase mb-6">
           <Zap size={12} className="text-brand-gold" />
-          Next-generation marketing platform
+          Next-Generation Marketing Platform
         </div>
 
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight max-w-5xl mx-auto">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-bold text-white leading-[1.08] tracking-[-0.03em] max-w-5xl mx-auto">
           Unify Your{" "}
           <span className="gradient-text">Marketing,</span>{" "}
           <span className="text-brand-gold">Analytics,</span>{" "}
@@ -39,13 +39,13 @@ function HeroSection() {
           <span className="gradient-text">Commerce</span>
         </h1>
 
-        <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
+        <p className="mt-5 text-lg md:text-xl text-white/65 max-w-2xl mx-auto leading-relaxed">
           LizConMart empowers organizations with clarity, automation, and
           measurable results — marketing, analytics, and commerce in one
           integrated ecosystem.
         </p>
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link href="/contact#demo" className="btn-gold text-base px-8 py-3.5">
             Request a Demo
             <ArrowRight size={16} />
@@ -58,24 +58,24 @@ function HeroSection() {
           </Link>
         </div>
 
-        <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-6 text-white/50 text-sm">
-          <div className="flex items-center gap-1.5">
-            <div className="flex">
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-white/45 text-sm">
+          <div className="flex items-center gap-2">
+            <div className="flex -space-x-px">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} size={14} className="fill-brand-gold text-brand-gold" />
+                <Star key={i} size={13} className="fill-brand-gold text-brand-gold" />
               ))}
             </div>
-            <span>4.9/5 from 1,200+ reviews</span>
+            <span className="font-medium">4.9/5 from 1,200+ reviews</span>
           </div>
-          <span className="hidden sm:block w-px h-4 bg-white/20" />
-          <span>Trusted by 3,000+ businesses worldwide</span>
-          <span className="hidden sm:block w-px h-4 bg-white/20" />
-          <span>ISO 27001 Certified</span>
+          <span className="hidden sm:block w-px h-3.5 bg-white/15" />
+          <span className="font-medium">Trusted by 3,000+ businesses worldwide</span>
+          <span className="hidden sm:block w-px h-3.5 bg-white/15" />
+          <span className="font-medium">ISO 27001 Certified</span>
         </div>
 
         {/* Dashboard Preview */}
-        <div className="mt-16 max-w-4xl mx-auto rounded-2xl border border-white/20 bg-white/5 backdrop-blur-sm overflow-hidden shadow-2xl shadow-black/40">
-          <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-black/20">
+        <div className="mt-14 max-w-4xl mx-auto rounded-3xl border border-white/15 bg-white/5 backdrop-blur-md overflow-hidden shadow-[0_40px_100px_-40px_rgba(0,0,0,0.55)]">
+          <div className="flex items-center gap-2 px-5 py-3.5 border-b border-white/10 bg-black/25">
             <div className="w-3 h-3 rounded-full bg-red-400/70" />
             <div className="w-3 h-3 rounded-full bg-yellow-400/70" />
             <div className="w-3 h-3 rounded-full bg-green-400/70" />

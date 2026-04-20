@@ -69,7 +69,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         return;
       }
 
-      setHeaderVisible(currentScrollY > lastScrollY);
+      setHeaderVisible(currentScrollY < lastScrollY);
       lastScrollY = currentScrollY;
     };
 

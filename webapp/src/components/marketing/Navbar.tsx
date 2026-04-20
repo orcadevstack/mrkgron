@@ -33,11 +33,12 @@ export default function Navbar() {
         return;
       }
 
+      setIsSolid(true);
+
       if (isScrollingDown) {
-        setIsVisible(true);
-        setIsSolid(true);
-      } else {
         setIsVisible(false);
+      } else {
+        setIsVisible(true);
       }
 
       lastScrollY.current = currentScrollY;

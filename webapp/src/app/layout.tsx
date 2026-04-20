@@ -12,12 +12,15 @@ import { Providers } from "@/components/providers";
 export const metadata: Metadata = {
     title: "LizConMart — Unify Your Marketing, Analytics, and Commerce",
     description: "LizConMart empowers organizations with clarity, automation, and measurable results.",
+    icons: {
+        icon: "/favicon.svg",
+    },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <body className="font-sans antialiased text-rendering-optimizeLegibility">
+            <body className="font-sans antialiased">
                 <Providers>{children}</Providers>
             </body>
         </html>

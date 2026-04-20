@@ -17,16 +17,17 @@ export default function CustomerDetailPage() {
         },
     });
 
-    if (isLoading) return <p className="text-gray-500">Loading…</p>;
-    if (!customer) return <p className="text-red-500">Customer not found.</p>;
+    if (isLoading) return <p className="app-panel px-6 py-10 text-sm text-slate-500">Loading customer profile...</p>;
+    if (!customer) return <p className="app-panel px-6 py-10 text-sm text-red-600">Customer not found.</p>;
 
     return (
-        <div>
-            <div className="mb-4">
-                <Link href="/crm" className="text-primary-600 hover:underline text-sm">← Back to Customers</Link>
-            </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-6">{customer.first_name} {customer.last_name}</h1>
-            <div className="bg-white rounded-2xl shadow p-6 grid grid-cols-2 gap-4 text-sm">
+        <div className="space-y-6">
+            <section className="app-surface p-8 lg:p-10">
+                <Link href="/crm" className="text-sm font-semibold text-brand-accent hover:text-brand-blue">← Back to customers</Link>
+                <h1 className="mt-4 text-3xl font-bold tracking-tight text-brand-dark">{customer.first_name} {customer.last_name}</h1>
+                <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">Detailed profile view for CRM operators, including consent, source attribution, and record provenance.</p>
+            </section>
+            <div className="app-panel grid grid-cols-1 gap-4 p-6 text-sm md:grid-cols-2">
                 <Detail label="Email" value={customer.email} />
                 <Detail label="Phone" value={customer.phone ?? "—"} />
                 <Detail label="Status" value={customer.status} />
@@ -41,9 +42,9 @@ export default function CustomerDetailPage() {
 
 function Detail({ label, value }: { label: string; value: string }) {
     return (
-        <div>
-            <p className="text-gray-400 text-xs uppercase mb-1">{label}</p>
-            <p className="text-gray-800 font-medium capitalize">{value}</p>
+        <div className="rounded-2xl bg-slate-50 px-4 py-4">
+            <p className="mb-1 text-xs uppercase tracking-[0.18em] text-slate-400">{label}</p>
+            <p className="font-medium capitalize text-brand-dark">{value}</p>
         </div>
     );
 }

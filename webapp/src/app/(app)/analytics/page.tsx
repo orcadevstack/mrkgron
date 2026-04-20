@@ -13,25 +13,29 @@ export default function AnalyticsPage() {
     const { data, isLoading } = useQuery({ queryKey: ["dashboards"], queryFn: fetchDashboards });
 
     return (
-        <div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-6">Analytics</h1>
+        <div className="space-y-6">
+            <section className="app-surface p-8 lg:p-10">
+                <p className="page-eyebrow">Analytics Workspace</p>
+                <h2 className="page-title">Dashboards and measurement views</h2>
+                <p className="page-copy">Open the dashboards your teams use to track customer behavior, campaign performance, and business outcomes.</p>
+            </section>
             {isLoading ? (
-                <p className="text-gray-500">Loading…</p>
+                <p className="app-panel px-6 py-10 text-sm text-slate-500">Loading dashboards...</p>
             ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {data?.map((d) => (
                         <Link
                             key={d.id}
                             href={`/analytics/dashboards/${d.id}`}
-                            className="bg-white rounded-2xl shadow p-6 hover:shadow-md transition"
+                            className="app-panel p-6 transition hover:-translate-y-0.5 hover:border-brand-accent/30 hover:shadow-md"
                         >
-                            <h2 className="font-semibold text-gray-900">{d.name}</h2>
+                            <h2 className="font-semibold text-brand-dark">{d.name}</h2>
                             {d.is_default && (
-                                <span className="mt-2 inline-block px-2 py-0.5 bg-primary-100 text-primary-700 text-xs rounded-full">Default</span>
+                                <span className="status-chip mt-3 bg-brand-accent/10 text-brand-blue">Default</span>
                             )}
                         </Link>
                     ))}
-                    {!data?.length && <p className="text-gray-500">No dashboards yet.</p>}
+                    {!data?.length && <p className="app-panel p-6 text-sm text-slate-500">No dashboards yet.</p>}
                 </div>
             )}
         </div>

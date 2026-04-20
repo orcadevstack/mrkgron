@@ -45,73 +45,77 @@ export default function MerchandisingPage() {
 
   return (
     <div className="space-y-8">
-      <h1 className="text-2xl font-bold text-gray-900">Merchandising</h1>
+      <section className="app-surface p-8 lg:p-10">
+        <p className="page-eyebrow">Merchandising</p>
+        <h2 className="page-title">Collections, banners, and pricing controls</h2>
+        <p className="page-copy">Oversee merchandising assets with consistent layout hierarchy and stronger readability for review and demo presentation.</p>
+      </section>
 
       {/* Collections */}
       <section>
-        <h2 className="text-lg font-semibold text-gray-700 mb-3">Collections</h2>
-        {colLoading ? <p className="text-gray-500">Loading…</p> : (
+        <h2 className="mb-3 text-lg font-semibold text-brand-dark">Collections</h2>
+        {colLoading ? <p className="app-panel px-6 py-10 text-sm text-slate-500">Loading collections...</p> : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {collections?.map((c) => (
-              <div key={c.id} className="bg-white rounded-xl shadow p-4 flex justify-between items-center">
+              <div key={c.id} className="app-panel flex items-center justify-between p-4">
                 <div>
-                  <p className="font-medium text-gray-900">{c.name}</p>
-                  <p className="text-xs text-gray-400">/{c.slug}</p>
+                  <p className="font-medium text-brand-dark">{c.name}</p>
+                  <p className="text-xs text-slate-400">/{c.slug}</p>
                 </div>
                 <span className={`text-xs px-2 py-0.5 rounded-full ${c.is_published ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
                   {c.is_published ? "Published" : "Draft"}
                 </span>
               </div>
             ))}
-            {!collections?.length && <p className="text-gray-500 col-span-3">No collections yet.</p>}
+            {!collections?.length && <p className="app-panel col-span-3 p-6 text-sm text-slate-500">No collections yet.</p>}
           </div>
         )}
       </section>
 
       {/* Banners */}
       <section>
-        <h2 className="text-lg font-semibold text-gray-700 mb-3">Banners</h2>
-        {bannerLoading ? <p className="text-gray-500">Loading…</p> : (
+        <h2 className="mb-3 text-lg font-semibold text-brand-dark">Banners</h2>
+        {bannerLoading ? <p className="app-panel px-6 py-10 text-sm text-slate-500">Loading banners...</p> : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {banners?.map((b) => (
-              <div key={b.id} className="bg-white rounded-xl shadow p-4">
+              <div key={b.id} className="app-panel p-4">
                 <div className="flex justify-between items-start">
-                  <p className="font-medium text-gray-900">{b.title}</p>
+                  <p className="font-medium text-brand-dark">{b.title}</p>
                   <span className={`text-xs px-2 py-0.5 rounded-full ${b.is_active ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
                     {b.is_active ? "Active" : "Inactive"}
                   </span>
                 </div>
-                <p className="text-xs text-gray-400 mt-1">{b.placement.replace(/_/g, " ")}</p>
+                <p className="mt-1 text-xs text-slate-400">{b.placement.replace(/_/g, " ")}</p>
               </div>
             ))}
-            {!banners?.length && <p className="text-gray-500 col-span-3">No banners yet.</p>}
+            {!banners?.length && <p className="app-panel col-span-3 p-6 text-sm text-slate-500">No banners yet.</p>}
           </div>
         )}
       </section>
 
       {/* Pricing Rules */}
       <section>
-        <h2 className="text-lg font-semibold text-gray-700 mb-3">Pricing Rules</h2>
-        {rulesLoading ? <p className="text-gray-500">Loading…</p> : (
-          <div className="bg-white rounded-2xl shadow overflow-hidden">
-            <table className="min-w-full divide-y divide-gray-100">
-              <thead className="bg-gray-50">
+        <h2 className="mb-3 text-lg font-semibold text-brand-dark">Pricing Rules</h2>
+        {rulesLoading ? <p className="app-panel px-6 py-10 text-sm text-slate-500">Loading pricing rules...</p> : (
+          <div className="app-panel overflow-hidden">
+            <table className="app-table">
+              <thead>
                 <tr>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Type</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Scope</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Priority</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Scope</th>
+                  <th>Priority</th>
+                  <th>Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-50">
+              <tbody>
                 {rules?.map((r) => (
-                  <tr key={r.id}>
-                    <td className="px-4 py-3 text-sm text-gray-800">{r.name}</td>
-                    <td className="px-4 py-3 text-sm text-gray-600">{r.rule_type.replace(/_/g, " ")}</td>
-                    <td className="px-4 py-3 text-sm text-gray-600">{r.scope}</td>
-                    <td className="px-4 py-3 text-sm text-gray-600">{r.priority}</td>
-                    <td className="px-4 py-3">
+                  <tr key={r.id} className="hover:bg-slate-50">
+                    <td className="text-sm text-brand-dark">{r.name}</td>
+                    <td className="text-sm text-slate-600">{r.rule_type.replace(/_/g, " ")}</td>
+                    <td className="text-sm text-slate-600">{r.scope}</td>
+                    <td className="text-sm text-slate-600">{r.priority}</td>
+                    <td>
                       <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${r.is_active ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
                         {r.is_active ? "Active" : "Inactive"}
                       </span>
@@ -119,7 +123,7 @@ export default function MerchandisingPage() {
                   </tr>
                 ))}
                 {!rules?.length && (
-                  <tr><td colSpan={5} className="px-4 py-6 text-center text-gray-400">No pricing rules yet.</td></tr>
+                  <tr><td colSpan={5} className="px-4 py-6 text-center text-slate-400">No pricing rules yet.</td></tr>
                 )}
               </tbody>
             </table>

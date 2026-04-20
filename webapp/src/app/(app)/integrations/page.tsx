@@ -47,56 +47,60 @@ export default function IntegrationsPage() {
 
   return (
     <div className="space-y-8">
-      <h1 className="text-2xl font-bold text-gray-900">Integrations</h1>
+      <section className="app-surface p-8 lg:p-10">
+        <p className="page-eyebrow">Integrations</p>
+        <h2 className="page-title">Connected systems and API access</h2>
+        <p className="page-copy">Review external connections, API credentials, and activation status from a consistent operator workspace.</p>
+      </section>
 
       {/* Connected Apps */}
       <section>
-        <h2 className="text-lg font-semibold text-gray-700 mb-3">Connected Apps</h2>
+        <h2 className="mb-3 text-lg font-semibold text-brand-dark">Connected Apps</h2>
         {intLoading ? (
-          <p className="text-gray-500">Loading…</p>
+          <p className="app-panel px-6 py-10 text-sm text-slate-500">Loading integrations...</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {integrations?.map((i) => (
-              <div key={i.id} className="bg-white rounded-xl shadow p-4 flex items-center justify-between">
+              <div key={i.id} className="app-panel flex items-center justify-between p-4">
                 <div>
-                  <p className="font-medium text-gray-900">{i.name}</p>
-                  <p className="text-xs text-gray-400 mt-0.5">{i.provider}</p>
+                  <p className="font-medium text-brand-dark">{i.name}</p>
+                  <p className="mt-0.5 text-xs text-slate-400">{i.provider}</p>
                 </div>
                 <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${statusColors[i.status]}`}>
                   {i.status}
                 </span>
               </div>
             ))}
-            {!integrations?.length && <p className="text-gray-500 col-span-3">No integrations connected.</p>}
+            {!integrations?.length && <p className="app-panel col-span-3 p-6 text-sm text-slate-500">No integrations connected.</p>}
           </div>
         )}
       </section>
 
       {/* API Keys */}
       <section>
-        <h2 className="text-lg font-semibold text-gray-700 mb-3">API Keys</h2>
+        <h2 className="mb-3 text-lg font-semibold text-brand-dark">API Keys</h2>
         {keysLoading ? (
-          <p className="text-gray-500">Loading…</p>
+          <p className="app-panel px-6 py-10 text-sm text-slate-500">Loading API keys...</p>
         ) : (
-          <div className="bg-white rounded-2xl shadow overflow-hidden">
-            <table className="min-w-full divide-y divide-gray-100">
-              <thead className="bg-gray-50">
+          <div className="app-panel overflow-hidden">
+            <table className="app-table">
+              <thead>
                 <tr>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Prefix</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Scope</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Expires</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                  <th>Name</th>
+                  <th>Prefix</th>
+                  <th>Scope</th>
+                  <th>Expires</th>
+                  <th>Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-50">
+              <tbody>
                 {apiKeys?.map((k) => (
-                  <tr key={k.id}>
-                    <td className="px-4 py-3 text-sm text-gray-800">{k.name}</td>
-                    <td className="px-4 py-3 text-sm font-mono text-gray-600">{k.key_prefix}…</td>
-                    <td className="px-4 py-3 text-sm text-gray-600 capitalize">{k.scope}</td>
-                    <td className="px-4 py-3 text-sm text-gray-500">{k.expires_at ? new Date(k.expires_at).toLocaleDateString() : "Never"}</td>
-                    <td className="px-4 py-3">
+                  <tr key={k.id} className="hover:bg-slate-50">
+                    <td className="text-sm text-brand-dark">{k.name}</td>
+                    <td className="font-mono text-sm text-slate-600">{k.key_prefix}…</td>
+                    <td className="text-sm capitalize text-slate-600">{k.scope}</td>
+                    <td className="text-sm text-slate-500">{k.expires_at ? new Date(k.expires_at).toLocaleDateString() : "Never"}</td>
+                    <td>
                       <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${k.is_active ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
                         {k.is_active ? "Active" : "Revoked"}
                       </span>
@@ -104,7 +108,7 @@ export default function IntegrationsPage() {
                   </tr>
                 ))}
                 {!apiKeys?.length && (
-                  <tr><td colSpan={5} className="px-4 py-6 text-center text-gray-400">No API keys created.</td></tr>
+                  <tr><td colSpan={5} className="px-4 py-6 text-center text-slate-400">No API keys created.</td></tr>
                 )}
               </tbody>
             </table>

@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import apiClient from "@/lib/api";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { AuthShell } from "@/components/auth/AuthShell";
 
 export default function RegisterPage() {
     const router = useRouter();
@@ -29,43 +31,65 @@ export default function RegisterPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-            <div className="w-full max-w-sm bg-white rounded-2xl shadow p-8">
-                <h1 className="text-2xl font-bold text-gray-900 mb-6">Create your account</h1>
-                {error && <p className="mb-4 text-sm text-red-600">{error}</p>}
-                <form onSubmit={handleSubmit} className="space-y-4">
+        <AuthShell
+            title="Create your operator account"
+            subtitle="Set up secure access for your LizConMart workspace and bring marketing, analytics, and commerce into one operating layer."
+            footer={
+                <>
+                    Already have an account?{" "}
+                    <Link href="/login" className="font-semibold text-brand-accent hover:text-brand-blue">
+                        Sign in
+                    </Link>
+                </>
+            }
+        >
+            <h2 className="text-2xl font-bold tracking-tight text-brand-dark">Create your account</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-500">
+                Start with the essentials. You can refine team and tenant settings after registration.
+            </p>
+            {error && <p className="mt-5 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p>}
+            <form onSubmit={handleSubmit} className="mt-6 space-y-5">
+                <div className="grid gap-5 sm:grid-cols-2">
                     {[
-                        { name: "first_name", label: "First Name", type: "text" },
-                        { name: "last_name", label: "Last Name", type: "text" },
-                        { name: "email", label: "Email", type: "email" },
-                        { name: "password", label: "Password", type: "password" },
-                        { name: "password_confirm", label: "Confirm Password", type: "password" },
+                        { name: "first_name", label: "First name", type: "text" },
+                        { name: "last_name", label: "Last name", type: "text" },
                     ].map((field) => (
                         <div key={field.name}>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">{field.label}</label>
+                            <label className="label-text">{field.label}</label>
                             <input
                                 name={field.name}
                                 type={field.type}
                                 value={form[field.name as keyof typeof form]}
                                 onChange={handleChange}
                                 required
-                                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                className="input-field"
                             />
                         </div>
                     ))}
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        className="w-full bg-primary-600 text-white font-semibold py-2 rounded-lg hover:bg-primary-700 disabled:opacity-50 transition"
-                    >
-                        {loading ? "Creating account…" : "Register"}
-                    </button>
-                </form>
-                <p className="mt-4 text-sm text-gray-500 text-center">
-                    Already have an account?{" "}
-                    <Link href="/login" className="text-primary-600 hover:underline">Sign in</Link>
-                </p>
-            </div>
-        </div>
+                </div>
+                {[
+                    { name: "email", label: "Work email", type: "email", placeholder: "name@company.com" },
+                    { name: "password", label: "Password", type: "password", placeholder: "Create a strong password" },
+                    { name: "password_confirm", label: "Confirm password", type: "password", placeholder: "Repeat your password" },
+                ].map((field) => (
+                    <div key={field.name}>
+                        <label className="label-text">{field.label}</label>
+                        <input
+                            name={field.name}
+                            type={field.type}
+                            value={form[field.name as keyof typeof form]}
+                            onChange={handleChange}
+                            required
+                            placeholder={field.placeholder}
+                            className="input-field"
+                        />
+                    </div>
+                ))}
+                <button type="submit" disabled={loading} className="btn-primary w-full py-3 text-base disabled:cursor-not-allowed disabled:opacity-60">
+                    {loading ? "Creating account..." : "Create account"}
+                    <ArrowRight size={16} />
+                </button>
+            </form>
+        </AuthShell>
     );
 }

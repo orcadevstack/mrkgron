@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/store/hooks";
 import { loginUser } from "@/store/authSlice";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { AuthShell } from "@/components/auth/AuthShell";
 
 export default function LoginPage() {
     const dispatch = useAppDispatch();
@@ -28,46 +30,58 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-            <div className="w-full max-w-sm bg-white rounded-2xl shadow p-8">
-                <h1 className="text-2xl font-bold text-gray-900 mb-6">Sign in to LizConMart</h1>
-                {error && <p className="mb-4 text-sm text-red-600">{error}</p>}
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                            autoComplete="email"
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                            autoComplete="current-password"
-                        />
-                    </div>
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        className="w-full bg-primary-600 text-white font-semibold py-2 rounded-lg hover:bg-primary-700 disabled:opacity-50 transition"
-                    >
-                        {loading ? "Signing in…" : "Sign in"}
-                    </button>
-                </form>
-                <p className="mt-4 text-sm text-gray-500 text-center">
+        <AuthShell
+            title="Access your workspace"
+            subtitle="Sign in to manage campaigns, customer intelligence, and commerce operations from one controlled environment."
+            footer={
+                <>
                     Don&apos;t have an account?{" "}
-                    <Link href="/register" className="text-primary-600 hover:underline">Register</Link>
-                </p>
-            </div>
-        </div>
+                    <Link href="/register" className="font-semibold text-brand-accent hover:text-brand-blue">
+                        Create one
+                    </Link>
+                </>
+            }
+        >
+            <h2 className="text-2xl font-bold tracking-tight text-brand-dark">Sign in to LizConMart</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-500">
+                Use your company email to enter the platform securely.
+            </p>
+            {error && <p className="mt-5 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p>}
+            <form onSubmit={handleSubmit} className="mt-6 space-y-5">
+                <div>
+                    <label className="label-text">Email address</label>
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        className="input-field"
+                        autoComplete="email"
+                        placeholder="name@company.com"
+                    />
+                </div>
+                <div>
+                    <div className="mb-1.5 flex items-center justify-between">
+                        <label className="label-text mb-0">Password</label>
+                        <Link href="/contact" className="text-xs font-medium text-brand-accent hover:text-brand-blue">
+                            Need access help?
+                        </Link>
+                    </div>
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        className="input-field"
+                        autoComplete="current-password"
+                        placeholder="Enter your password"
+                    />
+                </div>
+                <button type="submit" disabled={loading} className="btn-primary w-full py-3 text-base disabled:cursor-not-allowed disabled:opacity-60">
+                    {loading ? "Signing in..." : "Sign in"}
+                    <ArrowRight size={16} />
+                </button>
+            </form>
+        </AuthShell>
     );
 }

@@ -18,28 +18,40 @@ async function fetchSummary() {
     };
 }
 
+type DashboardSummary = Awaited<ReturnType<typeof fetchSummary>>;
+
 const statCards = [
     { label: "Total Customers", key: "totalCustomers", color: "bg-blue-500" },
     { label: "Campaigns", key: "totalCampaigns", color: "bg-purple-500" },
     { label: "Orders", key: "totalOrders", color: "bg-green-500" },
-];
+] as const satisfies ReadonlyArray<{
+    label: string;
+    key: keyof Pick<DashboardSummary, "totalCustomers" | "totalCampaigns" | "totalOrders">;
+    color: string;
+}>;
 
 export default function DashboardPage() {
     const { data, isLoading } = useQuery({ queryKey: ["dashboard-summary"], queryFn: fetchSummary });
 
     return (
-        <div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-6">Dashboard</h1>
+        <div className="space-y-6">
+            <section className="app-surface p-8 lg:p-10">
+                <p className="page-eyebrow">Executive Overview</p>
+                <h2 className="page-title">Operational performance at a glance</h2>
+                <p className="page-copy">
+                    Track customer growth, campaign volume, and commercial activity from one leadership summary.
+                </p>
+            </section>
             {isLoading ? (
-                <p className="text-gray-500">Loading…</p>
+                <p className="app-panel px-6 py-10 text-sm text-slate-500">Loading dashboard summary...</p>
             ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
                     {statCards.map(({ label, key, color }) => (
-                        <div key={key} className="bg-white rounded-2xl shadow p-6 flex items-center gap-4">
-                            <div className={`w-12 h-12 rounded-xl ${color} opacity-80`} />
+                        <div key={key} className="app-panel flex items-center gap-4 p-6">
+                            <div className={`h-12 w-12 rounded-2xl ${color} opacity-90`} />
                             <div>
-                                <p className="text-3xl font-bold text-gray-900">{data?.[key as keyof typeof data] ?? "—"}</p>
-                                <p className="text-sm text-gray-500">{label}</p>
+                                <p className="text-3xl font-bold text-brand-dark">{data?.[key] ?? "—"}</p>
+                                <p className="text-sm text-slate-500">{label}</p>
                             </div>
                         </div>
                     ))}

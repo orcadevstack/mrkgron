@@ -20,3 +20,10 @@ out/
 *.log
 staticfiles/
 media/
+
+# Screenshot / QA artifacts
+webapp/.tmp-*.png
+webapp/.tmp-*.jpg
+webapp/qa-snapshots/
+webapp/playwright-report/
+webapp/test-results/

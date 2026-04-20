@@ -12,8 +12,6 @@ import {
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
 
-export const dynamic = 'force-dynamic';
-
 export const metadata = {
   title: "Resources — LizConMart",
   description: "Blog, case studies, whitepapers, webinars, and documentation.",

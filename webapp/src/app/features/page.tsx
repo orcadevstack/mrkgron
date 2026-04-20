@@ -20,8 +20,6 @@ import {
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
 
-export const dynamic = 'force-dynamic';
-
 export const metadata = {
   title: "Features — LizConMart",
   description: "Explore all LizConMart platform features: communications, analytics, and commerce.",

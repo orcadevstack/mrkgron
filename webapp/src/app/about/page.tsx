@@ -3,8 +3,6 @@ import { ArrowRight, Heart, Lightbulb, Scale, Users, Target, Globe, CheckCircle2
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
 
-export const dynamic = 'force-dynamic';
-
 export const metadata = {
   title: "About Us — LizConMart",
   description: "Learn about LizConMart's mission, vision, and values.",

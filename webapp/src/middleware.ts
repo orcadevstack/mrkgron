@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
+// Middleware is not compatible with `output: "export"` (static builds).
+// When GITHUB_PAGES is set the config matcher is empty so Next.js never invokes this file.
+const isStaticExport = process.env.GITHUB_PAGES === "true";
+
 const protectedPrefixes = [
   "/dashboard",
   "/analytics",

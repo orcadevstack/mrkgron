@@ -4,8 +4,6 @@ import { ArrowRight, CheckCircle2, X, Zap } from "lucide-react";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
 
-export const dynamic = 'force-dynamic';
-
 export const metadata = {
   title: "Pricing — LizConMart",
   description: "Transparent, flexible pricing plans for every business.",

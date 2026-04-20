@@ -1,14 +1,17 @@
 import Cookies from "js-cookie";
 import apiClient from "./api";
-import type { AuthTokens, User } from "@/types";
+import type { AuthLoginResponse, AuthTokens, User } from "@/types";
+
+/** Store JWT tokens in cookies */
+export function storeTokens(access: string, refresh: string) {
+    Cookies.set("access_token", access, { sameSite: "strict" });
+    Cookies.set("refresh_token", refresh, { sameSite: "strict" });
+}
 
 export async function login(email: string, password: string): Promise<{ tokens: AuthTokens; user: User }> {
-    const { data } = await apiClient.post<AuthTokens>("/auth/login/", { email, password });
-    Cookies.set("access_token", data.access, { sameSite: "strict" });
-    Cookies.set("refresh_token", data.refresh, { sameSite: "strict" });
-
-    const { data: user } = await apiClient.get<User>("/auth/me/");
-    return { tokens: data, user };
+    const { data } = await apiClient.post<AuthLoginResponse>("/auth/login/", { email, password });
+    storeTokens(data.access, data.refresh);
+    return { tokens: { access: data.access, refresh: data.refresh }, user: data.user };
 }
 
 export async function register(payload: {
@@ -17,9 +20,10 @@ export async function register(payload: {
     password_confirm: string;
     first_name: string;
     last_name: string;
-}): Promise<User> {
-    const { data } = await apiClient.post<User>("/auth/register/", payload);
-    return data;
+}): Promise<{ tokens: AuthTokens; user: User }> {
+    const { data } = await apiClient.post<AuthLoginResponse>("/auth/register/", payload);
+    storeTokens(data.access, data.refresh);
+    return { tokens: { access: data.access, refresh: data.refresh }, user: data.user };
 }
 
 export async function logout(): Promise<void> {

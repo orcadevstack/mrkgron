@@ -2,15 +2,26 @@
 export interface User {
     id: string;
     email: string;
+    first_name: string;
+    last_name: string;
     full_name: string;
-    is_staff: boolean;
+    phone: string;
+    timezone: string;
+    language: string;
+    avatar: string | null;
+    is_staff?: boolean;
     is_active: boolean;
     date_joined: string;
+    two_factor_enabled: boolean;
 }
 
 export interface AuthTokens {
     access: string;
     refresh: string;
+}
+
+export interface AuthLoginResponse extends AuthTokens {
+    user: User;
 }
 
 // ─── Tenant ─────────────────────────────────────────────────────────────────

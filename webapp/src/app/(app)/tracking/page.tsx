@@ -18,13 +18,13 @@ interface RawEvent {
 }
 
 async function fetchSessions() {
-  const { data } = await apiClient.get<Session[]>("/tracking/sessions/");
-  return data;
+  const { data } = await apiClient.get<{ results: Session[] }>("/tracking/sessions/");
+  return data.results ?? [];
 }
 
 async function fetchEvents() {
-  const { data } = await apiClient.get<RawEvent[]>("/tracking/raw-events/");
-  return data;
+  const { data } = await apiClient.get<{ results: RawEvent[] }>("/tracking/raw-events/");
+  return data.results ?? [];
 }
 
 const statusColors: Record<string, string> = {

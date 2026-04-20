@@ -26,16 +26,16 @@ interface PricingRule {
 }
 
 async function fetchCollections() {
-  const { data } = await apiClient.get<Collection[]>("/merchandising/collections/");
-  return data;
+  const { data } = await apiClient.get<{ results: Collection[] }>("/merchandising/collections/");
+  return data.results ?? [];
 }
 async function fetchBanners() {
-  const { data } = await apiClient.get<Banner[]>("/merchandising/banners/");
-  return data;
+  const { data } = await apiClient.get<{ results: Banner[] }>("/merchandising/banners/");
+  return data.results ?? [];
 }
 async function fetchPricingRules() {
-  const { data } = await apiClient.get<PricingRule[]>("/merchandising/pricing-rules/");
-  return data;
+  const { data } = await apiClient.get<{ results: PricingRule[] }>("/merchandising/pricing-rules/");
+  return data.results ?? [];
 }
 
 export default function MerchandisingPage() {

@@ -11,8 +11,8 @@ interface Store {
 }
 
 async function fetchStores() {
-  const { data } = await apiClient.get<Store[]>("/storefront/stores/");
-  return data;
+  const { data } = await apiClient.get<{ results: Store[] }>("/storefront/stores/");
+  return data.results ?? [];
 }
 
 export default function StorefrontPage() {

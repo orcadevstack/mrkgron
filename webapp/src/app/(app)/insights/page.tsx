@@ -14,8 +14,8 @@ interface Insight {
 }
 
 async function fetchInsights() {
-  const { data } = await apiClient.get<Insight[]>("/insights/insights/");
-  return data;
+  const { data } = await apiClient.get<{ results: Insight[] }>("/insights/insights/");
+  return data.results ?? [];
 }
 
 const priorityColors: Record<string, string> = {

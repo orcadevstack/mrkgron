@@ -11,8 +11,8 @@ interface IdentityProfile {
 }
 
 async function fetchProfiles() {
-  const { data } = await apiClient.get<IdentityProfile[]>("/identity/profiles/");
-  return data;
+  const { data } = await apiClient.get<{ results: IdentityProfile[] }>("/identity/profiles/");
+  return data.results ?? [];
 }
 
 export default function IdentityPage() {

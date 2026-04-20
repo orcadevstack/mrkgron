@@ -17,13 +17,13 @@ interface ShipmentTracking {
 }
 
 async function fetchCarriers() {
-  const { data } = await apiClient.get<Carrier[]>("/logistics/carriers/");
-  return data;
+  const { data } = await apiClient.get<{ results: Carrier[] }>("/logistics/carriers/");
+  return data.results ?? [];
 }
 
 async function fetchShipments() {
-  const { data } = await apiClient.get<ShipmentTracking[]>("/logistics/shipments/");
-  return data;
+  const { data } = await apiClient.get<{ results: ShipmentTracking[] }>("/logistics/shipments/");
+  return data.results ?? [];
 }
 
 const statusColors: Record<string, string> = {

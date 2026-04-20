@@ -19,13 +19,13 @@ interface APIKey {
 }
 
 async function fetchIntegrations() {
-  const { data } = await apiClient.get<Integration[]>("/integrations/integrations/");
-  return data;
+  const { data } = await apiClient.get<{ results: Integration[] }>("/integrations/integrations/");
+  return data.results ?? [];
 }
 
 async function fetchAPIKeys() {
-  const { data } = await apiClient.get<APIKey[]>("/integrations/api-keys/");
-  return data;
+  const { data } = await apiClient.get<{ results: APIKey[] }>("/integrations/api-keys/");
+  return data.results ?? [];
 }
 
 const statusColors: Record<string, string> = {

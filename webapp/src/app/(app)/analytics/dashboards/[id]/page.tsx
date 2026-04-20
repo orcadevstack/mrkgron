@@ -9,12 +9,12 @@ import type { Dashboard, Widget } from "@/types";
 async function fetchDashboard(id: string) {
   const [dashboard, widgets] = await Promise.all([
     apiClient.get<Dashboard>(`/analytics/dashboards/${id}/`),
-    apiClient.get<Widget[]>(`/analytics/dashboards/${id}/widgets/`).catch(() => ({ data: [] as Widget[] })),
+    apiClient.get<{ results: Widget[] }>(`/analytics/dashboards/${id}/widgets/`).catch(() => ({ data: { results: [] as Widget[] } })),
   ]);
 
   return {
     dashboard: dashboard.data,
-    widgets: widgets.data,
+    widgets: widgets.data.results ?? [],
   };
 }
 

@@ -10,6 +10,7 @@ const navLinks = [
   { label: "Features", href: "/features" },
   { label: "Solutions", href: "/solutions" },
   { label: "Pricing", href: "/pricing" },
+  { label: "About", href: "/about" },
   { label: "Resources", href: "/resources" },
   { label: "Contact", href: "/contact" },
 ];
@@ -36,9 +37,9 @@ export default function Navbar() {
       setIsSolid(true);
 
       if (isScrollingDown) {
-        setIsVisible(false);
-      } else {
         setIsVisible(true);
+      } else {
+        setIsVisible(false);
       }
 
       lastScrollY.current = currentScrollY;
@@ -54,7 +55,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-transform duration-300 ${
-        isVisible ? "translate-y-0" : "-translate-y-[115%]"
+        menuOpen || isVisible ? "translate-y-0" : "-translate-y-[115%]"
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
@@ -102,7 +103,9 @@ export default function Navbar() {
                   ? "text-slate-700 hover:bg-slate-100 hover:text-brand-dark"
                   : "text-white/85 hover:bg-white/10 hover:text-white"
               }`}
-              aria-label="Toggle navigation"
+              aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav"
             >
               {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -112,7 +115,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="mx-auto mt-3 max-w-7xl px-4 sm:px-6 lg:px-8 md:hidden">
+        <div id="mobile-nav" className="mx-auto mt-3 max-w-7xl px-4 sm:px-6 lg:px-8 md:hidden">
           <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_60px_-36px_rgba(15,23,42,0.28)]">
             <div className="space-y-1 px-4 py-4">
             {navLinks.map((link) => (

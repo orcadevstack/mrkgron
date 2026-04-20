@@ -47,10 +47,11 @@ export default function LoginPage() {
                 Use your company email to enter the platform securely.
             </p>
             {error && <p className="mt-5 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p>}
-            <form onSubmit={handleSubmit} className="mt-6 space-y-5">
+            <form onSubmit={handleSubmit} className="mt-6 space-y-5" noValidate>
                 <div>
-                    <label className="label-text">Email address</label>
+                    <label htmlFor="login-email" className="label-text">Email address</label>
                     <input
+                        id="login-email"
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -58,16 +59,18 @@ export default function LoginPage() {
                         className="input-field"
                         autoComplete="email"
                         placeholder="name@company.com"
+                        aria-required="true"
                     />
                 </div>
                 <div>
                     <div className="mb-1.5 flex items-center justify-between">
-                        <label className="label-text mb-0">Password</label>
-                        <Link href="/contact" className="text-xs font-medium text-brand-accent hover:text-brand-blue">
-                            Need access help?
+                        <label htmlFor="login-password" className="label-text mb-0">Password</label>
+                        <Link href="/forgot-password" className="text-xs font-medium text-brand-accent hover:text-brand-blue">
+                            Forgot password?
                         </Link>
                     </div>
                     <input
+                        id="login-password"
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
@@ -75,6 +78,7 @@ export default function LoginPage() {
                         className="input-field"
                         autoComplete="current-password"
                         placeholder="Enter your password"
+                        aria-required="true"
                     />
                 </div>
                 <button type="submit" disabled={loading} className="btn-primary w-full py-3 text-base disabled:cursor-not-allowed disabled:opacity-60">

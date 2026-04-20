@@ -17,6 +17,17 @@ export const dynamic = 'force-dynamic';
 export const metadata = {
   title: "Resources — LizConMart",
   description: "Blog, case studies, whitepapers, webinars, and documentation.",
+  openGraph: {
+    title: "Resources — LizConMart",
+    description: "Blog posts, case studies, whitepapers, webinars, and platform documentation for marketing and commerce leaders.",
+    url: "https://lizconmart.com/resources",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Resources — LizConMart",
+    description: "Insights for marketing and commerce leaders.",
+  },
 };
 
 const blogPosts = [
@@ -127,7 +138,7 @@ export default function ResourcesPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-16">
+      <main id="main-content" className="pt-16">
         {/* Hero */}
         <section className="bg-hero-gradient hero-grid py-24 text-center relative overflow-hidden">
           <div className="orb w-80 h-80 bg-brand-cyan/20 top-0 right-1/4" />

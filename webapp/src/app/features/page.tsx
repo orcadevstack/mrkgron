@@ -25,6 +25,17 @@ export const dynamic = 'force-dynamic';
 export const metadata = {
   title: "Features — LizConMart",
   description: "Explore all LizConMart platform features: communications, analytics, and commerce.",
+  openGraph: {
+    title: "Platform Features — LizConMart",
+    description: "Every tool you need. One platform. From multi-channel communications to predictive analytics and full-stack commerce.",
+    url: "https://lizconmart.com/features",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Platform Features — LizConMart",
+    description: "Every tool you need. One platform.",
+  },
 };
 
 const communicationsFeatures = [
@@ -112,7 +123,7 @@ export default function FeaturesPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-16">
+      <main id="main-content" className="pt-16">
         {/* Hero */}
         <section className="bg-hero-gradient hero-grid py-24 relative overflow-hidden">
           <div className="orb w-96 h-96 bg-brand-accent/20 -top-20 left-1/4" />

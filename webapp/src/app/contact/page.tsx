@@ -37,7 +37,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-16">
+      <main id="main-content" className="pt-16">
         {/* Hero */}
         <section className="bg-hero-gradient hero-grid py-24 relative overflow-hidden">
           <div className="orb w-80 h-80 bg-brand-accent/20 top-0 right-1/4" />

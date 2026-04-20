@@ -8,6 +8,17 @@ export const dynamic = 'force-dynamic';
 export const metadata = {
   title: "About Us — LizConMart",
   description: "Learn about LizConMart's mission, vision, and values.",
+  openGraph: {
+    title: "About LizConMart",
+    description: "Built to empower every business to grow. Learn about our mission, team, and values.",
+    url: "https://lizconmart.com/about",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About LizConMart",
+    description: "Built to empower every business to grow.",
+  },
 };
 
 const values = [
@@ -46,7 +57,7 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-16">
+      <main id="main-content" className="pt-16">
         {/* Hero */}
         <section className="relative bg-hero-gradient hero-grid py-24 overflow-hidden">
           <div className="orb w-96 h-96 bg-brand-accent/20 -top-20 -left-20" />
@@ -97,7 +108,7 @@ export default function AboutPage() {
                   <div>
                     <h3 className="font-bold text-brand-dark">Vision</h3>
                     <p className="text-slate-500 text-sm mt-1 leading-relaxed">
-                      To be the world's leading marketing, analytics, and commerce
+                      To be the world&apos;s leading marketing, analytics, and commerce
                       automation platform — empowering millions of businesses to
                       compete and win in the digital economy.
                     </p>

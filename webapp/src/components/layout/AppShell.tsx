@@ -69,7 +69,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         return;
       }
 
-      setHeaderVisible(currentScrollY < lastScrollY);
+      setHeaderVisible(currentScrollY > lastScrollY);
       lastScrollY = currentScrollY;
     };
 
@@ -149,7 +149,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             </div>
           </div>
         </header>
-        <main className="mx-auto max-w-[1440px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+        <main id="main-content" className="mx-auto max-w-[1440px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
           {children}
         </main>
       </div>

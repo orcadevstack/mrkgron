@@ -19,95 +19,153 @@ import Footer from "@/components/marketing/Footer";
 
 /* ─── Hero Section ───────────────────────────────────────────── */
 function HeroSection() {
+  const executiveStats = [
+    { label: "Net revenue", value: "$2.4M", delta: "+18% MoM", tone: "text-emerald-400", detail: "Quarter pacing ahead" },
+    { label: "Campaign output", value: "142", delta: "+7% this month", tone: "text-brand-accent", detail: "Execution volume stable" },
+    { label: "Conversion rate", value: "6.8%", delta: "+1.2 pts", tone: "text-brand-gold", detail: "Funnel efficiency improving" },
+  ];
+
+  const operatingSignals = [
+    { title: "Executive control center", copy: "Unified visibility across communications, analytics, and commerce operations.", tag: "Signal 01" },
+    { title: "Institutional reliability", copy: "Clear governance, measurable performance, and decision-grade reporting in one surface.", tag: "Signal 02" },
+  ];
+
+  const executionCoverage = [
+    { label: "Communications orchestration", value: "96%" },
+    { label: "Analytics visibility", value: "99%" },
+    { label: "Commerce readiness", value: "94%" },
+  ];
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero-gradient hero-grid">
-      <div className="orb w-[600px] h-[600px] bg-brand-accent/20 -top-40 -left-40" />
-      <div className="orb w-[500px] h-[500px] bg-brand-indigo/20 -bottom-40 -right-40" />
-      <div className="orb w-[300px] h-[300px] bg-brand-cyan/10 top-1/3 right-1/4" />
+    <section className="hero-shell hero-grid relative overflow-hidden pt-28 text-white lg:min-h-screen lg:pt-32">
+      <div className="orb -left-40 -top-32 h-[620px] w-[620px] bg-brand-accent/18" />
+      <div className="orb -right-20 top-24 h-[420px] w-[420px] bg-brand-cyan/10" />
+      <div className="orb bottom-0 left-1/2 h-[320px] w-[320px] -translate-x-1/2 bg-brand-indigo/12" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-24 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/80 text-xs font-semibold tracking-widest uppercase mb-6">
-          <Zap size={12} className="text-brand-gold" />
-          Next-Generation Marketing Platform
-        </div>
-
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-bold text-white leading-[1.08] tracking-[-0.03em] max-w-5xl mx-auto">
-          Unify Your{" "}
-          <span className="gradient-text">Marketing,</span>{" "}
-          <span className="text-brand-gold">Analytics,</span>{" "}
-          and{" "}
-          <span className="gradient-text">Commerce</span>
-        </h1>
-
-        <p className="mt-5 text-lg md:text-xl text-white/65 max-w-2xl mx-auto leading-relaxed">
-          LizConMart empowers organizations with clarity, automation, and
-          measurable results — marketing, analytics, and commerce in one
-          integrated ecosystem.
-        </p>
-
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <Link href="/contact#demo" className="btn-gold text-base px-8 py-3.5">
-            Request a Demo
-            <ArrowRight size={16} />
-          </Link>
-          <Link href="/features" className="btn-primary text-base px-8 py-3.5">
-            Explore Features
-          </Link>
-          <Link href="/register" className="btn-outline text-base px-8 py-3.5">
-            Start Free Trial
-          </Link>
-        </div>
-
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-white/45 text-sm">
-          <div className="flex items-center gap-2">
-            <div className="flex -space-x-px">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={13} className="fill-brand-gold text-brand-gold" />
-              ))}
-            </div>
-            <span className="font-medium">4.9/5 from 1,200+ reviews</span>
+      <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-4 pb-20 sm:px-6 xl:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] xl:items-center lg:px-8 lg:pb-24">
+        <div className="max-w-2xl text-center lg:text-left">
+          <div className="hero-kicker">
+            <Zap size={12} className="text-brand-gold" />
+            Institutional Marketing Operating System
           </div>
-          <span className="hidden sm:block w-px h-3.5 bg-white/15" />
-          <span className="font-medium">Trusted by 3,000+ businesses worldwide</span>
-          <span className="hidden sm:block w-px h-3.5 bg-white/15" />
-          <span className="font-medium">ISO 27001 Certified</span>
-        </div>
 
-        {/* Dashboard Preview */}
-        <div className="mt-14 max-w-4xl mx-auto rounded-3xl border border-white/15 bg-white/5 backdrop-blur-md overflow-hidden shadow-[0_40px_100px_-40px_rgba(0,0,0,0.55)]">
-          <div className="flex items-center gap-2 px-5 py-3.5 border-b border-white/10 bg-black/25">
-            <div className="w-3 h-3 rounded-full bg-red-400/70" />
-            <div className="w-3 h-3 rounded-full bg-yellow-400/70" />
-            <div className="w-3 h-3 rounded-full bg-green-400/70" />
-            <span className="ml-3 text-xs text-white/30">lizconmart.com/dashboard</span>
+          <h1 className="mt-7 text-[2.65rem] font-bold leading-[1.04] tracking-[-0.045em] text-white sm:text-5xl md:text-[3.7rem] lg:text-[4.4rem] xl:text-[5.1rem]">
+            Operate <span className="text-brand-gold">Marketing, Analytics,</span> and Commerce with executive-grade clarity.
+          </h1>
+
+          <p className="mt-6 max-w-xl text-base leading-8 text-white/78 sm:text-lg lg:max-w-[44rem]">
+            LizConMart gives disciplined organizations one authoritative command surface for campaigns,
+            customer intelligence, and digital commerce execution without fragmented tools or weak reporting.
+          </p>
+
+          <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start xl:items-start">
+            <Link href="/contact#demo" className="btn-gold w-full px-8 py-3.5 text-base sm:w-auto">
+              Request a Demo
+              <ArrowRight size={16} />
+            </Link>
+            <Link href="/features" className="btn-primary w-full px-8 py-3.5 text-base sm:w-auto">
+              Explore Features
+            </Link>
+            <Link href="/register" className="btn-outline w-full px-8 py-3.5 text-base sm:w-auto">
+              Start Free Trial
+            </Link>
           </div>
-          <div className="p-6 grid grid-cols-3 gap-4">
-            {[
-              { label: "Revenue", value: "$2.4M", change: "+18%", color: "text-emerald-400" },
-              { label: "Active Campaigns", value: "142", change: "+7%", color: "text-brand-accent" },
-              { label: "Conversion Rate", value: "6.8%", change: "+1.2%", color: "text-brand-gold" },
-            ].map((stat) => (
-              <div key={stat.label} className="rounded-xl bg-white/5 border border-white/10 p-4 text-left">
-                <p className="text-xs text-white/40 uppercase tracking-wide">{stat.label}</p>
-                <p className="text-2xl font-bold text-white mt-1">{stat.value}</p>
-                <p className={`text-xs font-medium mt-1 ${stat.color}`}>{stat.change} this month</p>
-              </div>
-            ))}
-          </div>
-          <div className="px-6 pb-6">
-            <div className="rounded-xl bg-white/5 border border-white/10 p-4">
-              <div className="flex items-center justify-between mb-3">
-                <p className="text-xs text-white/40 uppercase tracking-wide">Campaign Performance</p>
-                <span className="text-xs text-brand-accent">Live</span>
-              </div>
-              <div className="flex items-end gap-2 h-16">
-                {[40, 65, 50, 80, 70, 90, 75, 95, 85, 100, 88, 92].map((h, i) => (
-                  <div
-                    key={i}
-                    className="flex-1 rounded-sm bg-gradient-to-t from-brand-accent/60 to-brand-cyan/60"
-                    style={{ height: `${h}%` }}
-                  />
+
+          <div className="mt-10 grid gap-4 text-sm text-white/68 sm:grid-cols-1 md:grid-cols-[auto_auto_auto] md:items-center md:justify-start lg:max-w-2xl">
+            <div className="flex items-center justify-center gap-2 lg:justify-start">
+              <div className="flex -space-x-px">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={13} className="fill-brand-gold text-brand-gold" />
                 ))}
+              </div>
+              <span className="font-medium text-white/80">4.9/5 from 1,200+ reviews</span>
+            </div>
+            <span className="font-medium text-white/80">Trusted by 3,000+ businesses worldwide</span>
+            <span className="font-medium text-white/80">ISO 27001 Certified</span>
+          </div>
+        </div>
+
+        <div className="hero-frame overflow-hidden p-4 sm:p-5 lg:p-6">
+          <div className="flex flex-col gap-3 rounded-[24px] border border-white/10 bg-slate-950/40 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">Control Center</p>
+              <p className="mt-1 text-sm font-semibold text-white/88">LizConMart Executive Workspace</p>
+            </div>
+            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+              <span className="h-2 w-2 rounded-full bg-emerald-300" />
+              Live operations
+            </div>
+          </div>
+
+          <div className="mt-4 grid gap-4 2xl:grid-cols-[1.15fr_0.85fr]">
+            <div className="hero-data-card p-5">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">Performance Snapshot</p>
+                  <h2 className="mt-2 text-[1.35rem] font-semibold leading-tight text-white">Command the full operating picture</h2>
+                </div>
+                <span className="w-fit rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs font-medium text-white/65">
+                  Updated 2m ago
+                </span>
+              </div>
+
+              <div className="mt-5 grid gap-3 md:grid-cols-3">
+                {executiveStats.map((stat) => (
+                  <div key={stat.label} className="rounded-[22px] border border-white/10 bg-white/5 p-4">
+                    <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-white/40">{stat.label}</p>
+                    <p className="mt-3 text-3xl font-bold tracking-[-0.03em] text-white">{stat.value}</p>
+                    <div className="mt-3 space-y-1.5">
+                      <p className={`text-xs font-semibold ${stat.tone}`}>{stat.delta}</p>
+                      <p className="text-[11px] leading-5 text-white/45">{stat.detail}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-5 rounded-[24px] border border-white/10 bg-white/5 p-4">
+                <div className="flex items-center justify-between">
+                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">Campaign Momentum</p>
+                  <span className="rounded-full bg-brand-accent/10 px-2.5 py-1 text-[11px] font-semibold text-brand-accent">Operationally healthy</span>
+                </div>
+                <div className="mt-4 flex h-24 items-end gap-2">
+                  {[42, 58, 54, 72, 66, 84, 76, 90, 82, 98, 86, 94].map((height, index) => (
+                    <div
+                      key={index}
+                      className="flex-1 rounded-t-md bg-gradient-to-t from-brand-accent/75 via-brand-indigo/70 to-brand-cyan/75"
+                      style={{ height: `${height}%` }}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-1">
+              {operatingSignals.map((signal) => (
+                <div key={signal.title} className="hero-data-card p-5">
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">Strategic Signal</p>
+                    <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-white/55">{signal.tag}</span>
+                  </div>
+                  <h3 className="mt-3 text-lg font-semibold leading-snug text-white">{signal.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-white/68">{signal.copy}</p>
+                </div>
+              ))}
+
+              <div className="hero-data-card p-5">
+                <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">Execution Coverage</p>
+                <div className="mt-4 space-y-3">
+                  {executionCoverage.map((item) => (
+                    <div key={item.label} className="rounded-2xl border border-white/8 bg-white/5 px-4 py-3">
+                      <div className="flex items-center justify-between text-sm text-white/75">
+                        <span>{item.label}</span>
+                        <span className="font-semibold text-white">{item.value}</span>
+                      </div>
+                      <div className="mt-2 h-2 rounded-full bg-white/10">
+                        <div className="h-2 rounded-full bg-accent-gradient" style={{ width: item.value }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -424,11 +482,27 @@ function MessagingSection() {
 }
 
 /* ─── Page ───────────────────────────────────────────────────── */
+export const metadata = {
+  title: "LizConMart — Unify Your Marketing, Analytics, and Commerce",
+  description: "LizConMart empowers organizations with clarity, automation, and measurable results — marketing, analytics, and commerce in one ecosystem.",
+  openGraph: {
+    title: "LizConMart — Unify Your Marketing, Analytics, and Commerce",
+    description: "LizConMart empowers organizations with clarity, automation, and measurable results.",
+    url: "https://lizconmart.com",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image" as const,
+    title: "LizConMart — Marketing, Analytics, and Commerce",
+    description: "One platform. Every tool your business needs to grow.",
+  },
+};
+
 export default function HomePage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <HeroSection />
         <ModulesSection />
         <StatsSection />

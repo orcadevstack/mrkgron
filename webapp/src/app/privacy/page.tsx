@@ -6,6 +6,12 @@ import Footer from "@/components/marketing/Footer";
 export const metadata = {
   title: "Privacy Policy — LizConMart",
   description: "Learn how LizConMart protects, processes, and governs customer data.",
+  openGraph: {
+    title: "Privacy Policy — LizConMart",
+    description: "LizConMart is designed to handle customer and operational data with clarity, restraint, and enterprise-level governance.",
+    url: "https://lizconmart.com/privacy",
+    type: "website",
+  },
 };
 
 const sections = [
@@ -31,7 +37,7 @@ export default function PrivacyPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-16">
+      <main id="main-content" className="pt-16">
         <section className="bg-hero-gradient hero-grid py-24">
           <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
             <span className="tag-pill bg-white/10 text-white/80">Privacy Policy</span>

@@ -9,6 +9,17 @@ export const dynamic = 'force-dynamic';
 export const metadata = {
   title: "Pricing — LizConMart",
   description: "Transparent, flexible pricing plans for every business.",
+  openGraph: {
+    title: "Pricing — LizConMart",
+    description: "Transparent, flexible pricing for every business. From $49/month to custom enterprise plans.",
+    url: "https://lizconmart.com/pricing",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pricing — LizConMart",
+    description: "Transparent, flexible pricing for every business.",
+  },
 };
 
 type Plan = {
@@ -140,7 +151,7 @@ export default function PricingPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-16">
+      <main id="main-content" className="pt-16">
         {/* Hero */}
         <section className="bg-hero-gradient hero-grid py-28 text-center relative overflow-hidden">
           <div className="orb w-80 h-80 bg-brand-accent/20 top-0 left-1/4" />
@@ -282,7 +293,7 @@ export default function PricingPage() {
             </h2>
             <p className="section-subheading mx-auto text-center mt-3">
               Still not sure which plan is right for you? Talk to our team —
-              we'll help you find the best fit.
+              we&apos;ll help you find the best fit.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
               <Link href="/contact#demo" className="btn-primary text-base px-8 py-3.5">

@@ -10,10 +10,30 @@ import "./globals.css";
 import { Providers } from "@/components/providers";
 
 export const metadata: Metadata = {
-    title: "LizConMart — Unify Your Marketing, Analytics, and Commerce",
-    description: "LizConMart empowers organizations with clarity, automation, and measurable results.",
+    title: {
+        default: "LizConMart — Unify Your Marketing, Analytics, and Commerce",
+        template: "%s | LizConMart",
+    },
+    description: "LizConMart empowers organizations with clarity, automation, and measurable results — marketing, analytics, and commerce in one ecosystem.",
+    metadataBase: new URL("https://lizconmart.com"),
+    openGraph: {
+        type: "website",
+        siteName: "LizConMart",
+        title: "LizConMart — Unify Your Marketing, Analytics, and Commerce",
+        description: "LizConMart empowers organizations with clarity, automation, and measurable results.",
+        locale: "en_US",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "LizConMart — Unify Your Marketing, Analytics, and Commerce",
+        description: "LizConMart empowers organizations with clarity, automation, and measurable results.",
+    },
     icons: {
         icon: "/favicon.svg",
+    },
+    robots: {
+        index: true,
+        follow: true,
     },
 };
 
@@ -21,6 +41,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en">
             <body className="font-sans antialiased">
+                <a
+                    href="#main-content"
+                    className="skip-to-content"
+                >
+                    Skip to main content
+                </a>
                 <Providers>{children}</Providers>
             </body>
         </html>

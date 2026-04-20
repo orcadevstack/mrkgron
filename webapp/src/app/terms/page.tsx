@@ -6,6 +6,12 @@ import Footer from "@/components/marketing/Footer";
 export const metadata = {
   title: "Terms of Service — LizConMart",
   description: "Review the core service terms that govern LizConMart platform use.",
+  openGraph: {
+    title: "Terms of Service — LizConMart",
+    description: "Clear terms for a serious platform. LizConMart is built for disciplined operators.",
+    url: "https://lizconmart.com/terms",
+    type: "website",
+  },
 };
 
 const sections = [
@@ -19,7 +25,7 @@ export default function TermsPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-16">
+      <main id="main-content" className="pt-16">
         <section className="bg-brand-dark py-24">
           <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
             <span className="tag-pill bg-white/10 text-white/80">Terms of Service</span>

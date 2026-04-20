@@ -29,7 +29,11 @@ export const metadata: Metadata = {
         description: "LizConMart empowers organizations with clarity, automation, and measurable results.",
     },
     icons: {
-        icon: "/favicon.svg",
+        icon: [
+            { url: "/favicon.svg", type: "image/svg+xml" },
+        ],
+        apple: "/favicon.svg",
+        shortcut: "/favicon.svg",
     },
     robots: {
         index: true,

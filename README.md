@@ -151,6 +151,151 @@ Interactive docs: `GET /api/v1/docs/`
 
 ---
 
+## Customer Engagement Platform Overview
+
+### What This Platform Is
+
+The Customer Engagement Platform is a unified system for understanding users, automating lifecycle communication, and managing multi-tenant organizations. It brings together four core capabilities — **Segments**, **Journeys**, **Messaging**, and **Tenants** — to help teams deliver personalized, timely, and scalable customer experiences.
+
+Instead of stitching together multiple tools, this platform provides a single, cohesive environment where teams can define audiences, automate workflows, communicate across channels, and manage organizations with clarity and control.
+
+---
+
+### Why It Exists
+
+Modern SaaS companies need more than just analytics or messaging. They need a way to:
+
+- Understand who their users are
+- Trigger the right actions at the right time
+- Communicate across multiple channels
+- Manage multiple organizations and roles
+- Scale without operational overhead
+
+This platform solves those needs by combining data, automation, and communication into one integrated system.
+
+---
+
+### Core Modules
+
+#### 1. Segments — Understand and Organize Your Users
+
+Segments allow teams to group users based on attributes, behaviors, or lifecycle criteria. These segments become the foundation for targeting, personalization, and automation.
+
+**What Segments Enable**
+- Real-time audience definitions
+- Dynamic and static segmentation
+- Targeted messaging and campaigns
+- Journey triggers
+- Behavioral insights
+
+**Key Features**
+- KPI strip showing segment distribution
+- Dynamic vs static segment badges
+- Auto-refresh indicators and timestamps
+- Manual refresh for dynamic segments
+- Pagination and empty states
+- Backend integration for refresh actions
+
+---
+
+#### 2. Journeys — Automate Customer Lifecycle Flows
+
+Journeys let teams build automated workflows that guide users through onboarding, activation, retention, and re-engagement.
+
+**What Journeys Enable**
+- Automated onboarding sequences
+- Behavioral triggers and branching logic
+- Re-engagement and win-back flows
+- Multi-step lifecycle automation
+- Consistent, scalable customer experiences
+
+**Key Features**
+- KPI strip for journey states
+- Filter tabs for lifecycle management
+- Card grid with trigger and re-entry indicators
+- State actions: Play, Pause, Archive
+- Backend integration for journey state transitions
+
+---
+
+#### 3. Messaging — Multi-Channel Customer Communication
+
+Messaging provides a unified inbox for all inbound and outbound communication across channels like email, SMS, WhatsApp, push, and in-app messages.
+
+**What Messaging Enables**
+- Centralized customer conversations
+- Multi-channel communication from one interface
+- Support workflows and follow-ups
+- Automated and manual replies
+- Full conversation history
+
+**Key Features**
+- Split-pane inbox (threads + message view)
+- Filters for open, closed, and all threads
+- Channel badges for quick identification
+- Threaded conversation layout
+- Reply composer with keyboard shortcuts
+- Backend integration for sending replies
+
+---
+
+#### 4. Tenants — Multi-Tenant SaaS Administration
+
+Tenants allow the platform to support multiple organizations, each with its own members, roles, and lifecycle state.
+
+**What Tenants Enable**
+- Multi-organization SaaS environments
+- Role-based access control
+- Plan-level management
+- Enterprise onboarding
+- Organization-level administration
+
+**Key Features**
+- KPI strip for plan distribution
+- Expandable tenant rows with member rosters
+- Activate/deactivate toggles
+- Inline invite form with role selection
+- Role badges for owners, admins, and members
+- Backend integration for tenant updates and invites
+
+---
+
+### How Everything Works Together
+
+The platform is designed so each module reinforces the others:
+
+| Module | Role |
+|---|---|
+| **Segments** | Define who your users are |
+| **Journeys** | Automate what happens to them |
+| **Messaging** | Communicate with them |
+| **Tenants** | Organize everything at the SaaS level |
+
+This creates a complete customer engagement ecosystem that supports both small teams and enterprise-scale organizations.
+
+---
+
+### Who This Platform Is For
+
+- SaaS companies building lifecycle automation
+- Customer success and support teams
+- Growth and marketing teams
+- Product teams needing behavioral triggers
+- Platforms requiring multi-tenant architecture
+
+---
+
+### What Makes It Different
+
+- Built with modern TypeScript and React
+- Clean, modular architecture
+- Real-time data flows
+- Multi-channel communication
+- Enterprise-ready tenant management
+- Unified experience instead of fragmented tools
+
+---
+
 ## License
 
 MIT

@@ -23,6 +23,10 @@ const pageTitles: Record<string, { title: string; subtitle: string }> = {
   "/logistics": { title: "Logistics", subtitle: "Track carriers, fulfillment status, and delivery visibility." },
   "/insights": { title: "Insights", subtitle: "Surface decision-ready recommendations and high-signal opportunities." },
   "/merchandising": { title: "Merchandising", subtitle: "Curate collections, banners, and rules that influence conversion." },
+  "/segments": { title: "Segments", subtitle: "Define static and dynamic audience segments for precise customer targeting." },
+  "/journeys": { title: "Journeys", subtitle: "Orchestrate multi-step customer journeys triggered by events, segments, or schedules." },
+  "/messaging": { title: "Messaging", subtitle: "Manage customer message threads and conversations across all channels." },
+  "/tenants": { title: "Tenant Management", subtitle: "Manage workspace tenants, team memberships, and access roles." },
   "/settings": { title: "Settings", subtitle: "Control workspace preferences, notifications, and operator defaults." },
 };
 

@@ -16,7 +16,7 @@ const sizeConfig = {
   lg: { mark: 48, glyph: 26, title: "text-xl", gap: "gap-3.5", subtitle: "text-xs tracking-[0.24em]", radius: "rounded-2xl" },
 } as const;
 
-/** Institutional logo mark — three ascending bars representing growth & analytics */
+/** Institutional logo mark — hexagonal network representing connected commerce */
 function LogoMark({ size, glyph, radius }: { size: number; glyph: number; radius: string }) {
   return (
     <span
@@ -27,9 +27,23 @@ function LogoMark({ size, glyph, radius }: { size: number; glyph: number; radius
       style={{ width: size, height: size }}
     >
       <svg width={glyph} height={glyph} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <rect x="1" y="15" width="5" height="8" rx="1.2" fill="rgba(255,255,255,0.55)" />
-        <rect x="9.5" y="9" width="5" height="14" rx="1.2" fill="rgba(255,255,255,0.78)" />
-        <rect x="18" y="2" width="5" height="21" rx="1.2" fill="white" />
+        {/* Hexagon shell */}
+        <path
+          d="M12 2 L20.66 7 L20.66 17 L12 22 L3.34 17 L3.34 7 Z"
+          stroke="rgba(255,255,255,0.32)"
+          strokeWidth="1.4"
+          strokeLinejoin="round"
+        />
+        {/* Top node */}
+        <circle cx="12" cy="8" r="2.3" fill="white" />
+        {/* Bottom-left node */}
+        <circle cx="7.4" cy="16" r="2.3" fill="rgba(255,255,255,0.68)" />
+        {/* Bottom-right node */}
+        <circle cx="16.6" cy="16" r="2.3" fill="rgba(255,255,255,0.68)" />
+        {/* Connecting edges */}
+        <line x1="12" y1="10.3" x2="7.4" y2="13.7" stroke="rgba(255,255,255,0.48)" strokeWidth="1.3" strokeLinecap="round" />
+        <line x1="12" y1="10.3" x2="16.6" y2="13.7" stroke="rgba(255,255,255,0.48)" strokeWidth="1.3" strokeLinecap="round" />
+        <line x1="9.7" y1="16" x2="14.3" y2="16" stroke="rgba(255,255,255,0.48)" strokeWidth="1.3" strokeLinecap="round" />
       </svg>
     </span>
   );

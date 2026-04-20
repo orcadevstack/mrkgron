@@ -18,50 +18,55 @@ import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
 
 /* ─── Hero Section ───────────────────────────────────────────── */
+/* ─── Hero Section ───────────────────────────────────────────── */
 function HeroSection() {
-  const executiveStats = [
-    { label: "Net revenue", value: "$2.4M", delta: "+18% MoM", tone: "text-emerald-400", detail: "Quarter pacing ahead" },
-    { label: "Campaign output", value: "142", delta: "+7% this month", tone: "text-brand-accent", detail: "Execution volume stable" },
-    { label: "Conversion rate", value: "6.8%", delta: "+1.2 pts", tone: "text-brand-gold", detail: "Funnel efficiency improving" },
+  const stats = [
+    { label: "Net revenue", value: "$2.4M", delta: "+18% MoM", tone: "text-emerald-400" },
+    { label: "Campaigns active", value: "142", delta: "+7% this month", tone: "text-blue-400" },
+    { label: "Conversion rate", value: "6.8%", delta: "+1.2 pts", tone: "text-amber-400" },
   ];
 
-  const operatingSignals = [
-    { title: "Executive control center", copy: "Unified visibility across communications, analytics, and commerce operations.", tag: "Signal 01" },
-    { title: "Institutional reliability", copy: "Clear governance, measurable performance, and decision-grade reporting in one surface.", tag: "Signal 02" },
+  const coverage = [
+    { label: "Communications orchestration", value: 96 },
+    { label: "Analytics visibility", value: 99 },
+    { label: "Commerce readiness", value: 94 },
   ];
 
-  const executionCoverage = [
-    { label: "Communications orchestration", value: "96%" },
-    { label: "Analytics visibility", value: "99%" },
-    { label: "Commerce readiness", value: "94%" },
-  ];
+  const bars = [42, 58, 54, 72, 66, 84, 76, 90, 82, 98, 86, 94];
 
   return (
-    <section className="hero-shell hero-grid relative overflow-hidden pt-28 text-white lg:min-h-screen lg:pt-32">
-      <div className="orb -left-40 -top-32 h-[620px] w-[620px] bg-brand-accent/18" />
-      <div className="orb -right-20 top-24 h-[420px] w-[420px] bg-brand-cyan/10" />
-      <div className="orb bottom-0 left-1/2 h-[320px] w-[320px] -translate-x-1/2 bg-brand-indigo/12" />
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 pt-28 text-white lg:pt-32">
 
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-4 pb-20 sm:px-6 xl:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] xl:items-center lg:px-8 lg:pb-24">
-        <div className="max-w-2xl text-center lg:text-left">
-          <div className="hero-kicker">
-            <Zap size={12} className="text-brand-gold" />
+      {/* decorative blobs — pure bg-color + blur, zero background-image */}
+      <div className="pointer-events-none absolute -left-40 -top-32 h-[600px] w-[600px] rounded-full bg-blue-600/14 blur-[100px]" />
+      <div className="pointer-events-none absolute -right-24 top-20 h-[420px] w-[420px] rounded-full bg-cyan-500/10 blur-[90px]" />
+      <div className="pointer-events-none absolute bottom-0 left-1/2 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-indigo-600/12 blur-[80px]" />
+
+      <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28 xl:grid-cols-2 xl:items-center">
+
+        {/* ── Left: copy ── */}
+        <div className="max-w-2xl text-center xl:text-left">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/78">
+            <Zap size={12} className="text-amber-400" />
             Institutional Marketing Operating System
           </div>
 
-          <h1 className="mt-7 text-[2.65rem] font-bold leading-[1.04] tracking-[-0.045em] text-white sm:text-5xl md:text-[3.7rem] lg:text-[4.4rem] xl:text-[5.1rem]">
-            Operate <span className="text-brand-gold">Marketing, Analytics,</span> and Commerce with executive-grade clarity.
+          <h1 className="mt-7 text-[2.6rem] font-bold leading-[1.05] tracking-[-0.045em] sm:text-5xl md:text-[3.6rem] lg:text-[4.2rem] xl:text-[4.8rem]">
+            Operate{" "}
+            <span className="bg-gradient-to-r from-amber-300 to-yellow-400 bg-clip-text text-transparent">
+              Marketing, Analytics,
+            </span>{" "}
+            and Commerce with executive-grade clarity.
           </h1>
 
-          <p className="mt-6 max-w-xl text-base leading-8 text-white/78 sm:text-lg lg:max-w-[44rem]">
+          <p className="mt-6 max-w-xl text-base leading-8 text-white/72 sm:text-lg">
             LizConMart gives disciplined organizations one authoritative command surface for campaigns,
-            customer intelligence, and digital commerce execution without fragmented tools or weak reporting.
+            customer intelligence, and digital commerce execution — without fragmented tools or weak reporting.
           </p>
 
-          <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start xl:items-start">
+          <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:justify-center xl:justify-start">
             <Link href="/contact#demo" className="btn-gold w-full px-8 py-3.5 text-base sm:w-auto">
-              Request a Demo
-              <ArrowRight size={16} />
+              Request a Demo <ArrowRight size={16} />
             </Link>
             <Link href="/features" className="btn-primary w-full px-8 py-3.5 text-base sm:w-auto">
               Explore Features
@@ -71,97 +76,114 @@ function HeroSection() {
             </Link>
           </div>
 
-          <div className="mt-10 grid gap-4 text-sm text-white/68 sm:grid-cols-1 md:grid-cols-[auto_auto_auto] md:items-center md:justify-start lg:max-w-2xl">
-            <div className="flex items-center justify-center gap-2 lg:justify-start">
+          <div className="mt-10 flex flex-col gap-2 text-sm sm:flex-row sm:flex-wrap sm:items-center sm:justify-center xl:justify-start">
+            <div className="flex items-center justify-center gap-2">
               <div className="flex -space-x-px">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={13} className="fill-brand-gold text-brand-gold" />
+                  <Star key={i} size={13} className="fill-amber-400 text-amber-400" />
                 ))}
               </div>
-              <span className="font-medium text-white/80">4.9/5 from 1,200+ reviews</span>
+              <span className="font-medium text-white/80">4.9 / 5 from 1,200+ reviews</span>
             </div>
-            <span className="font-medium text-white/80">Trusted by 3,000+ businesses worldwide</span>
-            <span className="font-medium text-white/80">ISO 27001 Certified</span>
+            <span className="hidden text-white/25 sm:inline">·</span>
+            <span className="text-center font-medium text-white/80">Trusted by 3,000+ businesses</span>
+            <span className="hidden text-white/25 sm:inline">·</span>
+            <span className="text-center font-medium text-white/80">ISO 27001 Certified</span>
           </div>
         </div>
 
-        <div className="hero-frame overflow-hidden p-4 sm:p-5 lg:p-6">
+        {/* ── Right: live dashboard card ── */}
+        <div className="w-full rounded-[32px] border border-white/12 bg-white/6 p-4 shadow-[0_48px_140px_-52px_rgba(2,8,23,0.8)] backdrop-blur-md sm:p-5 lg:p-6">
+
+          {/* Header bar */}
           <div className="flex flex-col gap-3 rounded-[24px] border border-white/10 bg-slate-950/40 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">Control Center</p>
               <p className="mt-1 text-sm font-semibold text-white/88">LizConMart Executive Workspace</p>
             </div>
             <div className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
-              <span className="h-2 w-2 rounded-full bg-emerald-300" />
+              <span className="h-2 w-2 rounded-full bg-emerald-400" />
               Live operations
             </div>
           </div>
 
           <div className="mt-4 grid gap-4 2xl:grid-cols-[1.15fr_0.85fr]">
-            <div className="hero-data-card p-5">
+            {/* Main panel */}
+            <div className="rounded-[26px] border border-white/12 bg-slate-950/30 p-5 backdrop-blur-md">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">Performance Snapshot</p>
-                  <h2 className="mt-2 text-[1.35rem] font-semibold leading-tight text-white">Command the full operating picture</h2>
+                  <h2 className="mt-2 text-[1.3rem] font-semibold leading-tight text-white">Command the full operating picture</h2>
                 </div>
                 <span className="w-fit rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs font-medium text-white/65">
                   Updated 2m ago
                 </span>
               </div>
 
+              {/* KPI tiles */}
               <div className="mt-5 grid gap-3 md:grid-cols-3">
-                {executiveStats.map((stat) => (
-                  <div key={stat.label} className="rounded-[22px] border border-white/10 bg-white/5 p-4">
-                    <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-white/40">{stat.label}</p>
-                    <p className="mt-3 text-3xl font-bold tracking-[-0.03em] text-white">{stat.value}</p>
-                    <div className="mt-3 space-y-1.5">
-                      <p className={`text-xs font-semibold ${stat.tone}`}>{stat.delta}</p>
-                      <p className="text-[11px] leading-5 text-white/45">{stat.detail}</p>
-                    </div>
+                {stats.map((s) => (
+                  <div key={s.label} className="rounded-[20px] border border-white/10 bg-white/5 p-4">
+                    <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-white/40">{s.label}</p>
+                    <p className="mt-3 text-3xl font-bold tracking-[-0.03em] text-white">{s.value}</p>
+                    <p className={`mt-2 text-xs font-semibold ${s.tone}`}>{s.delta}</p>
                   </div>
                 ))}
               </div>
 
+              {/* Bar chart — pure CSS flex divs, no SVG or image */}
               <div className="mt-5 rounded-[24px] border border-white/10 bg-white/5 p-4">
                 <div className="flex items-center justify-between">
                   <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">Campaign Momentum</p>
-                  <span className="rounded-full bg-brand-accent/10 px-2.5 py-1 text-[11px] font-semibold text-brand-accent">Operationally healthy</span>
+                  <span className="rounded-full bg-blue-500/15 px-2.5 py-1 text-[11px] font-semibold text-blue-300">Operationally healthy</span>
                 </div>
-                <div className="mt-4 flex h-24 items-end gap-2">
-                  {[42, 58, 54, 72, 66, 84, 76, 90, 82, 98, 86, 94].map((height, index) => (
+                <div className="mt-4 flex h-24 items-end gap-[3px]">
+                  {bars.map((h, i) => (
                     <div
-                      key={index}
-                      className="flex-1 rounded-t-md bg-gradient-to-t from-brand-accent/75 via-brand-indigo/70 to-brand-cyan/75"
-                      style={{ height: `${height}%` }}
+                      key={i}
+                      className="flex-1 rounded-t-sm bg-gradient-to-t from-blue-500/80 via-indigo-500/70 to-cyan-400/80"
+                      style={{ height: `${h}%` }}
                     />
                   ))}
                 </div>
               </div>
             </div>
 
+            {/* Side panels */}
             <div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-1">
-              {operatingSignals.map((signal) => (
-                <div key={signal.title} className="hero-data-card p-5">
-                  <div className="flex items-center justify-between gap-3">
-                    <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">Strategic Signal</p>
-                    <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-white/55">{signal.tag}</span>
-                  </div>
-                  <h3 className="mt-3 text-lg font-semibold leading-snug text-white">{signal.title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-white/68">{signal.copy}</p>
+              <div className="rounded-[26px] border border-white/12 bg-slate-950/30 p-5 backdrop-blur-md">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">Strategic Signal</p>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-white/55">Signal 01</span>
                 </div>
-              ))}
+                <h3 className="mt-3 text-base font-semibold leading-snug text-white">Executive control center</h3>
+                <p className="mt-2 text-sm leading-6 text-white/65">Unified visibility across communications, analytics, and commerce operations.</p>
+              </div>
 
-              <div className="hero-data-card p-5">
+              <div className="rounded-[26px] border border-white/12 bg-slate-950/30 p-5 backdrop-blur-md">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">Strategic Signal</p>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-white/55">Signal 02</span>
+                </div>
+                <h3 className="mt-3 text-base font-semibold leading-snug text-white">Institutional reliability</h3>
+                <p className="mt-2 text-sm leading-6 text-white/65">Clear governance, measurable performance, and decision-grade reporting in one surface.</p>
+              </div>
+
+              {/* Progress bars */}
+              <div className="rounded-[26px] border border-white/12 bg-slate-950/30 p-5 backdrop-blur-md">
                 <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">Execution Coverage</p>
                 <div className="mt-4 space-y-3">
-                  {executionCoverage.map((item) => (
+                  {coverage.map((item) => (
                     <div key={item.label} className="rounded-2xl border border-white/8 bg-white/5 px-4 py-3">
                       <div className="flex items-center justify-between text-sm text-white/75">
                         <span>{item.label}</span>
-                        <span className="font-semibold text-white">{item.value}</span>
+                        <span className="font-semibold text-white">{item.value}%</span>
                       </div>
-                      <div className="mt-2 h-2 rounded-full bg-white/10">
-                        <div className="h-2 rounded-full bg-accent-gradient" style={{ width: item.value }} />
+                      <div className="mt-2 h-1.5 rounded-full bg-white/10">
+                        <div
+                          className="h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400"
+                          style={{ width: `${item.value}%` }}
+                        />
                       </div>
                     </div>
                   ))}

@@ -7,6 +7,7 @@ import {
     LayoutDashboard, Users, Mail, BarChart2, ShoppingBag,
     Workflow, Settings, LogOut, Store, Truck, Tag,
     Lightbulb, Plug, Fingerprint, Activity,
+    Filter, Route, MessageSquare, Building2,
 } from "lucide-react";
 import { useAppDispatch } from "@/store/hooks";
 import { logoutUser } from "@/store/authSlice";
@@ -24,8 +25,12 @@ const navItems = [
     { href: "/logistics", label: "Logistics", icon: Truck },
     { href: "/merchandising", label: "Merchandising", icon: Tag },
     { href: "/automation", label: "Automation", icon: Workflow },
+    { href: "/segments", label: "Segments", icon: Filter },
+    { href: "/journeys", label: "Journeys", icon: Route },
+    { href: "/messaging", label: "Messaging", icon: MessageSquare },
     { href: "/integrations", label: "Integrations", icon: Plug },
     { href: "/identity", label: "Identity", icon: Fingerprint },
+    { href: "/tenants", label: "Tenants", icon: Building2 },
     { href: "/settings", label: "Settings", icon: Settings },
 ];
 

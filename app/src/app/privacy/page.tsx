@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ShieldCheck, Lock, Globe } from "lucide-react";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
+import { MarketingHero } from "@/components/marketing/MarketingHero";
 
 export const metadata = {
   title: "Privacy Policy — Mrkgron",
@@ -37,18 +38,12 @@ export default function PrivacyPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content" className="pt-16">
-        <section className="bg-hero-gradient hero-grid py-24">
-          <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
-            <span className="tag-pill bg-white/10 text-white/80">Privacy Policy</span>
-            <h1 className="mt-6 text-4xl font-bold leading-tight text-white md:text-6xl">
-              Privacy built for <span className="text-brand-gold">institutional trust</span>
-            </h1>
-            <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-white/70">
-              Mrkgron is designed to handle customer and operational data with clarity, restraint, and enterprise-level governance.
-            </p>
-          </div>
-        </section>
+      <main id="main-content">
+        <MarketingHero
+          eyebrow="PRIVACY POLICY"
+          title={<>Privacy built for <span className="text-[#EE6C4D]">institutional trust.</span></>}
+          description="Mrkgron handles customer and operational data with clear controls, durable governance, and accountable operating practices."
+        />
 
         <section className="bg-white py-24">
           <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">

@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
+import { MarketingHero } from "@/components/marketing/MarketingHero";
 
 export const metadata = {
   title: "Solutions — Mrkgron",
@@ -110,26 +111,12 @@ export default function SolutionsPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content" className="pt-16">
-        {/* Hero */}
-        <section className="bg-hero-gradient hero-grid py-24 relative overflow-hidden">
-          <div className="orb w-96 h-96 bg-brand-accent/20 -top-20 -right-20" />
-          <div className="orb w-72 h-72 bg-brand-gold/10 bottom-0 left-20" />
-          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span className="tag-pill bg-white/10 text-white/80 mb-6 inline-block">
-              Solutions
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mt-4">
-              A solution for{" "}
-              <span className="text-brand-gold">every business</span>
-            </h1>
-            <p className="mt-5 text-lg text-white/70 max-w-2xl mx-auto">
-              Whether you run a startup or a global enterprise, Mrkgron has
-              a tailored solution to help you communicate smarter, analyze
-              deeper, and grow faster.
-            </p>
-          </div>
-        </section>
+      <main id="main-content">
+        <MarketingHero
+          eyebrow="SOLUTIONS"
+          title={<>A controlled path to <span className="text-[#EE6C4D]">better operations.</span></>}
+          description="Mrkgron adapts to the operating requirements of growing businesses and global enterprises without fragmenting the underlying intelligence layer."
+        />
 
         {/* Solutions Grid */}
         <section className="py-24 bg-white">

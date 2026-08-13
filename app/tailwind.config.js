@@ -1,4 +1,14 @@
 /** @type {import('tailwindcss').Config} */
+const BLACK_SCALE = {
+  50: "#000000", 100: "#000000", 200: "#000000", 300: "#000000", 400: "#000000",
+  500: "#000000", 600: "#000000", 700: "#000000", 800: "#000000", 900: "#000000",
+};
+
+const ACCENT_SCALE = {
+  50: "#EE6C4D", 100: "#EE6C4D", 200: "#EE6C4D", 300: "#EE6C4D", 400: "#EE6C4D",
+  500: "#EE6C4D", 600: "#EE6C4D", 700: "#EE6C4D", 800: "#EE6C4D", 900: "#EE6C4D",
+};
+
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,18 +19,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          50:  "#eff6ff",
-          100: "#dbeafe",
-          200: "#bfdbfe",
-          300: "#93c5fd",
-          400: "#60a5fa",
-          500: "#3b82f6",
-          600: "#2563eb",
-          700: "#1d4ed8",
-          800: "#1e40af",
-          900: "#1e3a8a",
-        },
+        primary: BLACK_SCALE,
+        slate: BLACK_SCALE,
+        blue: BLACK_SCALE,
+        indigo: BLACK_SCALE,
+        cyan: BLACK_SCALE,
+        amber: BLACK_SCALE,
+        emerald: BLACK_SCALE,
+        red: ACCENT_SCALE,
         brand: {
           navy:   "#000000",
           dark:   "#000000",
@@ -31,28 +37,17 @@ module.exports = {
           cyan:   "#000000",
           light:  "#FFFFFF",
         },
-        // Enterprise palette
         enterprise: {
-          navy:  "#0A1A2F",
-          blue:  "#1F6FEB",
-          gold:  "#F5C542",
-          slate: "#2E3A45",
+          navy: "#000000",
+          blue: "#000000",
+          gold: "#EE6C4D",
+          slate: "#000000",
         },
       },
       fontFamily: {
         sans: ["Inter", "SF Pro Display", "system-ui", "sans-serif"],
         display: ["Inter", "SF Pro Display", "system-ui", "sans-serif"],
         mono: ["Inter", "SF Pro Display", "system-ui", "sans-serif"],
-      },
-      backgroundImage: {
-        "hero-gradient":
-          "linear-gradient(135deg, #0A1628 0%, #1E3A8A 50%, #0F172A 100%)",
-        "card-gradient":
-          "linear-gradient(135deg, rgba(59,130,246,0.08) 0%, rgba(79,70,229,0.08) 100%)",
-        "accent-gradient":
-          "linear-gradient(90deg, #3B82F6 0%, #06B6D4 100%)",
-        "gold-gradient":
-          "linear-gradient(90deg, #F59E0B 0%, #FBBF24 100%)",
       },
       animation: {
         "fade-up":    "fadeUp 0.6s ease-out forwards",

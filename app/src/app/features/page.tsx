@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
+import { MarketingHero } from "@/components/marketing/MarketingHero";
 
 export const metadata = {
   title: "Features — Mrkgron",
@@ -121,32 +122,17 @@ export default function FeaturesPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content" className="pt-16">
-        {/* Hero */}
-        <section className="bg-hero-gradient hero-grid py-24 relative overflow-hidden">
-          <div className="orb w-96 h-96 bg-brand-accent/20 -top-20 left-1/4" />
-          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span className="tag-pill bg-white/10 text-white/80 mb-6 inline-block">
-              Platform Features
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mt-4">
-              Every tool you need.{" "}
-              <span className="text-brand-gold">One platform.</span>
-            </h1>
-            <p className="mt-5 text-lg text-white/70 max-w-2xl mx-auto">
-              From multi-channel communications to predictive analytics and
-              full-stack commerce — Mrkgron brings it all together.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-              <Link href="/register" className="btn-gold text-base px-8 py-3.5">
-                Start Free Trial <ArrowRight size={16} />
-              </Link>
-              <Link href="/contact#demo" className="btn-outline text-base px-8 py-3.5">
-                Request a Demo
-              </Link>
-            </div>
+      <main id="main-content">
+        <MarketingHero
+          eyebrow="PLATFORM FEATURES"
+          title={<>Every tool you need. <span className="text-[#EE6C4D]">One platform.</span></>}
+          description="From communications and predictive analytics to commerce operations, Mrkgron brings the operating picture together."
+        >
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Link href="/register" className="btn-primary">Start free trial <ArrowRight size={16} /></Link>
+            <Link href="/contact#demo" className="btn-outline">Request a demonstration</Link>
           </div>
-        </section>
+        </MarketingHero>
 
         {/* Quick Nav */}
         <div className="bg-white border-b border-slate-100 sticky top-16 z-30">

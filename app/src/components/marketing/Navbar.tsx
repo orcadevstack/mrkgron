@@ -65,7 +65,7 @@ export default function Navbar() {
             <BrandLogo tone={isLightSurface ? "dark" : "light"} size="md" className="shrink-0" />
 
           {/* Desktop Nav */}
-            <nav className="hidden items-center gap-1 md:flex">
+            <nav className="hidden items-center gap-1 xl:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -78,7 +78,7 @@ export default function Navbar() {
             </nav>
 
           {/* Desktop CTA */}
-            <div className="hidden items-center gap-3 md:flex">
+            <div className="hidden items-center gap-3 xl:flex">
             <Link
               href="/login"
               className="px-4 py-2 text-sm font-medium text-black transition-colors hover:text-[#EE6C4D]"
@@ -96,7 +96,7 @@ export default function Navbar() {
           {/* Mobile Toggle */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="rounded-md p-2.5 text-black transition-colors hover:text-[#EE6C4D] md:hidden"
+              className="rounded-md p-2.5 text-black transition-colors hover:text-[#EE6C4D] xl:hidden"
               aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
@@ -109,24 +109,24 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div id="mobile-nav" className="mx-auto mt-3 max-w-7xl px-4 sm:px-6 lg:px-8 md:hidden">
-          <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_60px_-36px_rgba(15,23,42,0.28)]">
+        <div id="mobile-nav" className="mx-auto mt-3 max-w-7xl px-4 sm:px-6 lg:px-8 xl:hidden">
+          <div className="overflow-hidden border border-black/10 bg-white">
             <div className="space-y-1 px-4 py-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-dark"
+                className="block border-l-2 border-transparent px-4 py-3 text-sm font-medium text-black transition-colors hover:border-[#EE6C4D]"
               >
                 {link.label}
               </Link>
             ))}
-              <div className="flex flex-col gap-2 border-t border-slate-200 pt-3">
+              <div className="flex flex-col gap-2 border-t border-black/10 pt-3">
               <Link
                 href="/login"
                 onClick={() => setMenuOpen(false)}
-                className="block rounded-full px-4 py-3 text-center text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-dark"
+                className="block px-4 py-3 text-center text-sm font-medium text-black transition-colors hover:text-[#EE6C4D]"
               >
                 Login
               </Link>

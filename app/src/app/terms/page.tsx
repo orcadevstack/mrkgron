@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, BadgeCheck, Scale, Shield } from "lucide-react";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
+import { MarketingHero } from "@/components/marketing/MarketingHero";
 
 export const metadata = {
   title: "Terms of Service — Mrkgron",
@@ -25,18 +26,12 @@ export default function TermsPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content" className="pt-16">
-        <section className="bg-brand-dark py-24">
-          <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
-            <span className="tag-pill bg-white/10 text-white/80">Terms of Service</span>
-            <h1 className="mt-6 text-4xl font-bold leading-tight text-white md:text-6xl">
-              Clear terms for a <span className="gradient-text">serious platform</span>
-            </h1>
-            <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-white/70">
-              Mrkgron is built for disciplined operators. These terms define the shared expectations for platform use, access, and service integrity.
-            </p>
-          </div>
-        </section>
+      <main id="main-content">
+        <MarketingHero
+          eyebrow="TERMS OF SERVICE"
+          title={<>Clear terms for a <span className="text-[#EE6C4D]">serious platform.</span></>}
+          description="These terms define the operating expectations for service access, account control, and institutional integrity."
+        />
 
         <section className="bg-brand-light py-24">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">

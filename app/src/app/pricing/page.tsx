@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import { ArrowRight, CheckCircle2, X, Zap } from "lucide-react";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
+import { MarketingHero } from "@/components/marketing/MarketingHero";
 
 export const metadata = {
   title: "Pricing — Mrkgron",
@@ -149,34 +150,12 @@ export default function PricingPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content" className="pt-16">
-        {/* Hero */}
-        <section className="bg-hero-gradient hero-grid py-28 text-center relative overflow-hidden">
-          <div className="orb w-80 h-80 bg-brand-accent/20 top-0 left-1/4" />
-          <div className="orb w-64 h-64 bg-brand-indigo/15 -bottom-20 -right-10" />
-          <div className="relative z-10 max-w-3xl mx-auto px-4">
-            <span className="tag-pill bg-white/10 text-white/80 mb-6 inline-block tracking-widest">
-              Pricing
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.08] tracking-[-0.03em] mt-4">
-              Simple, transparent pricing.{" "}
-              <span className="text-brand-gold">No surprises.</span>
-            </h1>
-            <p className="mt-5 text-lg text-white/65 leading-relaxed">
-              Start free, upgrade when you need to. Every plan includes a
-              14-day free trial — no credit card required.
-            </p>
-            <div className="mt-6 flex items-center justify-center gap-3">
-              <span className="text-sm text-white/50">Monthly</span>
-              <div className="relative w-12 h-6 rounded-full bg-brand-accent cursor-pointer">
-                <div className="absolute right-1 top-1 w-4 h-4 rounded-full bg-white shadow" />
-              </div>
-              <span className="text-sm text-white font-semibold">
-                Annual <span className="text-brand-gold ml-1">Save 20%</span>
-              </span>
-            </div>
-          </div>
-        </section>
+      <main id="main-content">
+        <MarketingHero
+          eyebrow="PRICING"
+          title={<>Clear commercial terms. <span className="text-[#EE6C4D]">No surprises.</span></>}
+          description="Choose the operating capacity and controls your organization needs. Every plan begins with a 14-day evaluation period."
+        />
 
         {/* Plans */}
         <section className="py-20 bg-brand-light">

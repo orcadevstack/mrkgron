@@ -22,30 +22,24 @@ test.describe("Homepage", () => {
   test("renders hero section with key content", async ({ page }) => {
     await page.goto("/");
     await expect(page).toHaveTitle(/Mrkgron/i);
-    await expect(page.getByText("Control Center")).toBeVisible();
-    await expect(page.getByText("Live operations")).toBeVisible();
-    await expect(page.getByRole("link", { name: /start free trial/i }).first()).toBeVisible();
+    await expect(page.getByRole("heading", { name: /operating system for informed financial decisions/i })).toBeVisible();
+    await expect(page.getByText("Executive overview")).toBeVisible();
+    await expect(page.getByRole("link", { name: /request a demonstration/i })).toBeVisible();
   });
 
   test("hero CTAs link to correct pages", async ({ page }) => {
     await page.goto("/");
-    const demoBtn = page.getByRole("link", { name: /request a demo/i }).first();
+    const demoBtn = page.getByRole("link", { name: /request a demonstration/i }).first();
     await expect(demoBtn).toHaveAttribute("href", /\/contact/);
     const trialBtn = page.getByRole("link", { name: /start free trial/i }).first();
     await expect(trialBtn).toHaveAttribute("href", /\/register/);
   });
 
-  test("modules section renders all three modules", async ({ page }) => {
+  test("platform capability section renders", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByText("Communications")).first().toBeVisible();
-    await expect(page.getByText("Analytics")).first().toBeVisible();
-    await expect(page.getByText("Commerce")).first().toBeVisible();
-  });
-
-  test("stats section visible", async ({ page }) => {
-    await page.goto("/");
-    await expect(page.getByText(/3,000\+/)).toBeVisible();
-    await expect(page.getByText(/99\.9%/)).toBeVisible();
+    await expect(page.getByText("A governed source of truth")).toBeVisible();
+    await expect(page.getByText("Decisions at the right moment")).toBeVisible();
+    await expect(page.getByText("Execution with control")).toBeVisible();
   });
 
   test("footer is present with links", async ({ page }) => {
@@ -144,14 +138,14 @@ test.describe("About Page", () => {
 test.describe("Contact Page", () => {
   test("renders contact form", async ({ page }) => {
     await page.goto("/contact");
-    await expect(page.getByRole("heading", { name: /let's talk/i })).toBeVisible();
-    await expect(page.getByRole("button", { name: /send message/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /start an institutional conversation/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /submit enquiry/i })).toBeVisible();
   });
 
   test("form fields are present", async ({ page }) => {
     await page.goto("/contact");
     await expect(page.getByLabel(/full name/i)).toBeVisible();
-    await expect(page.getByLabel(/work email/i)).toBeVisible();
+    await expect(page.getByLabel(/business email/i)).toBeVisible();
     await expect(page.getByLabel(/message/i)).toBeVisible();
   });
 });
@@ -159,7 +153,7 @@ test.describe("Contact Page", () => {
 test.describe("Resources Page", () => {
   test("renders blog and resources sections", async ({ page }) => {
     await page.goto("/resources");
-    await expect(page.getByText(/knowledge hub/i)).toBeVisible();
+    await expect(page.getByText(/intelligence for the people who run the business/i)).toBeVisible();
     await expect(page.getByText(/blog/i).first()).toBeVisible();
   });
 });

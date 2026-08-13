@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Heart, Lightbulb, Scale, Users, Target, Globe, CheckCircle2, Zap } from "lucide-react";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
+import { MarketingHero } from "@/components/marketing/MarketingHero";
 
 export const metadata = {
   title: "About Us — Mrkgron",
@@ -55,26 +56,12 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content" className="pt-16">
-        {/* Hero */}
-        <section className="relative bg-hero-gradient hero-grid py-24 overflow-hidden">
-          <div className="orb w-96 h-96 bg-brand-accent/20 -top-20 -left-20" />
-          <div className="orb w-80 h-80 bg-brand-gold/10 bottom-0 right-10" />
-          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span className="tag-pill bg-white/10 text-white/80 mb-6 inline-block">
-              About Mrkgron
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mt-4">
-              Built to empower every{" "}
-              <span className="text-brand-gold">business to grow</span>
-            </h1>
-            <p className="mt-6 text-lg text-white/70 leading-relaxed">
-              Mrkgron was founded on the belief that marketing intelligence,
-              data analytics, and commerce should not be separate — they should
-              work as one.
-            </p>
-          </div>
-        </section>
+      <main id="main-content">
+        <MarketingHero
+          eyebrow="ABOUT MRKGRON"
+          title={<>Built to make business intelligence <span className="text-[#EE6C4D]">operational.</span></>}
+          description="Mrkgron unifies marketing, analytics, and commerce so leaders can operate from one trusted view of the business."
+        />
 
         {/* Mission & Vision */}
         <section className="py-24 bg-white">

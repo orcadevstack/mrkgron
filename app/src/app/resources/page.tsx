@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
+import { MarketingHero } from "@/components/marketing/MarketingHero";
 
 export const metadata = {
   title: "Resources — Mrkgron",
@@ -136,24 +137,12 @@ export default function ResourcesPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content" className="pt-16">
-        {/* Hero */}
-        <section className="bg-hero-gradient hero-grid py-24 text-center relative overflow-hidden">
-          <div className="orb w-80 h-80 bg-brand-cyan/20 top-0 right-1/4" />
-          <div className="relative z-10 max-w-3xl mx-auto px-4">
-            <span className="tag-pill bg-white/10 text-white/80 mb-6 inline-block">
-              Resources
-            </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mt-4">
-              Learn, grow, and{" "}
-              <span className="text-brand-gold">stay ahead</span>
-            </h1>
-            <p className="mt-5 text-lg text-white/70">
-              Practical insights, real-world case studies, and expert
-              knowledge to help your business grow with Mrkgron.
-            </p>
-          </div>
-        </section>
+      <main id="main-content">
+        <MarketingHero
+          eyebrow="RESOURCES"
+          title={<>Intelligence for the people who <span className="text-[#EE6C4D]">run the business.</span></>}
+          description="Research, operating insights, case studies, and documentation for teams building durable growth."
+        />
 
         {/* Resource Type Nav */}
         <div className="bg-white border-b border-slate-100 sticky top-16 z-30">

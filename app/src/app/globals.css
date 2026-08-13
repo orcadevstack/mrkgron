@@ -61,7 +61,7 @@ body {
         @apply text-2xl font-semibold text-black leading-tight;
     }
     .section-subheading {
-        @apply mt-3 max-w-2xl text-lg leading-8 text-black/70;
+        @apply mt-3 max-w-2xl text-lg leading-8 text-black;
     }
     .card-feature {
         @apply bg-white rounded-lg p-6 border border-black/10;
@@ -70,9 +70,7 @@ body {
         @apply inline-block px-3 py-1 rounded-md text-xs font-medium tracking-wide uppercase;
     }
     .app-shell-bg {
-        background-image:
-            radial-gradient(circle at top left, rgba(59, 130, 246, 0.16), transparent 28%),
-            linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
+        @apply bg-white;
     }
     .app-surface {
         @apply rounded-lg border border-black/10 bg-white;
@@ -102,25 +100,22 @@ body {
         @apply mb-1.5 block text-sm font-medium text-black;
     }
     .auth-shell {
-        background-image:
-            radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 28%),
-            radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.12), transparent 20%),
-            linear-gradient(180deg, #f7fbff 0%, #eef4ff 100%);
+        @apply bg-white;
     }
     .auth-card {
-        @apply rounded-[28px] border border-white/70 bg-white/90 shadow-[0_40px_120px_-48px_rgba(10,22,40,0.45)] backdrop-blur;
+        @apply rounded-lg border border-black/10 bg-white;
     }
     .status-chip {
-        @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold;
+        @apply inline-flex items-center rounded-md px-3 py-1 text-xs font-medium;
     }
     .page-eyebrow {
-        @apply inline-flex items-center gap-2 rounded-full border border-brand-accent/20 bg-brand-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-brand-blue;
+        @apply inline-flex items-center gap-2 border-l-2 border-[#EE6C4D] px-3 py-1 text-xs font-medium text-black;
     }
     .page-title {
-        @apply mt-4 text-3xl font-bold tracking-tight text-brand-dark md:text-4xl;
+        @apply mt-4 text-[32px] font-semibold text-black;
     }
     .page-copy {
-        @apply mt-3 max-w-2xl text-sm leading-6 text-slate-600 md:text-base;
+        @apply mt-3 max-w-2xl text-base leading-6 text-black;
     }
     .marketing-header-shell {
         @apply border-b border-black/10 bg-white px-4;

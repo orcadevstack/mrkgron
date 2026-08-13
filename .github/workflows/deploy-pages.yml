@@ -34,7 +34,7 @@ jobs:
       - name: Build static export
         env:
           GITHUB_PAGES: "true"
-          NEXT_PUBLIC_API_URL: "https://api.lizconmart.com/api/v1"
+          NEXT_PUBLIC_API_URL: "https://api.mrkgron.com/api/v1"
         run: npm run build
 
       - name: Add .nojekyll

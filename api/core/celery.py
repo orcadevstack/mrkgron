@@ -1,13 +1,13 @@
 """
-Celery application factory for LizConMart.
+Celery application factory for Mrkgron.
 """
 
 import os
 from celery import Celery
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "lizconmart.settings.development")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mrkgron.settings.development")
 
-app = Celery("lizconmart")
+app = Celery("mrkgron")
 
 # Read config from Django settings using the CELERY namespace
 app.config_from_object("django.conf:settings", namespace="CELERY")

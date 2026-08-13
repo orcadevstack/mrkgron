@@ -1,5 +1,5 @@
 """
-Custom middleware for LizConMart.
+Custom middleware for Mrkgron.
 """
 
 import logging

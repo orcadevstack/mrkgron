@@ -1,13 +1,15 @@
-# LizConMart
+# Mrkgron
 
 Enterprise-grade Marketing Automation, CRM, Analytics & E-Commerce platform built with Django + Next.js.
+
+Deployment and operations instructions are maintained in the versioned [project wiki](docs/DEPLOYMENT.md).
 
 ---
 
 ## Architecture
 
 ```
-lizconmart/
+mrkgron/
 ├── api/              # Django 4.2 REST API
 │   ├── apps/
 │   │   ├── authentication/   # JWT auth, user management
@@ -21,7 +23,7 @@ lizconmart/
 │   │   ├── commerce/         # Products, orders, payments
 │   │   └── automation/       # Workflow automation engine
 │   ├── core/                 # Celery, utils, middleware
-│   └── lizconmart/           # Django settings
+│   └── mrkgron/           # Django settings
 ├── webapp/           # Next.js 14 TypeScript app
 │   └── src/
 │       ├── app/              # App Router pages
@@ -145,7 +147,7 @@ Interactive docs: `GET /api/v1/docs/`
 
 | Role       | Email                    | Password     |
 |------------|--------------------------|--------------|
-| Superuser  | admin@lizconmart.com     | Admin1234!   |
+| Superuser  | admin@mrkgron.com     | Admin1234!   |
 
 **Change these immediately in production.**
 

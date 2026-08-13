@@ -45,7 +45,7 @@ class Integration(models.Model):
 
 
 class WebhookEndpoint(models.Model):
-    """Outbound webhook — LizConMart → external system."""
+    """Outbound webhook — Mrkgron → external system."""
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     tenant = models.ForeignKey("tenants.Tenant", on_delete=models.CASCADE, related_name="webhook_endpoints")
@@ -91,7 +91,7 @@ class WebhookDelivery(models.Model):
 
 
 class APIKey(models.Model):
-    """Public API key for third-party access to the LizConMart API."""
+    """Public API key for third-party access to the Mrkgron API."""
 
     SCOPE_READ = "read"
     SCOPE_WRITE = "write"

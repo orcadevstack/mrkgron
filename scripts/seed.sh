@@ -15,14 +15,14 @@ from apps.crm.models import Customer
 User = get_user_model()
 
 # Superuser
-if not User.objects.filter(email="admin@lizconmart.com").exists():
+if not User.objects.filter(email="admin@mrkgron.com").exists():
     User.objects.create_superuser(
-        email="admin@lizconmart.com",
+        email="admin@mrkgron.com",
         password="Admin1234!",
         first_name="Admin",
         last_name="User",
     )
-    print("Created superuser: admin@lizconmart.com / Admin1234!")
+    print("Created superuser: admin@mrkgron.com / Admin1234!")
 
 # Tenant
 tenant, _ = Tenant.objects.get_or_create(

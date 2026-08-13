@@ -3,16 +3,14 @@
 @tailwind utilities;
 
 :root {
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 249, 250, 251;
-    --brand-navy: #0A1628;
-    --brand-accent: #3B82F6;
-    --brand-gold: #F59E0B;
+    --mrkgron-black: #000000;
+    --mrkgron-white: #FFFFFF;
+    --mrkgron-accent: #EE6C4D;
 }
 
 body {
-    color: rgb(var(--foreground-rgb));
-    background: rgb(var(--background-start-rgb));
+    color: var(--mrkgron-black);
+    background: var(--mrkgron-white);
     min-height: 100vh;
 }
 
@@ -22,10 +20,9 @@ body {
     }
 
     body {
-        @apply bg-slate-50 font-sans text-slate-950;
+        @apply bg-white font-sans text-black;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        letter-spacing: -0.01em;
         text-rendering: optimizeLegibility;
     }
 
@@ -35,7 +32,7 @@ body {
     h4,
     h5,
     h6 {
-        @apply font-semibold tracking-[-0.03em] text-balance;
+        @apply font-semibold text-balance;
     }
 
     p {
@@ -52,28 +49,25 @@ body {
 
 @layer components {
     .btn-primary {
-        @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-accent px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/30 active:scale-95;
+        @apply inline-flex items-center justify-center gap-2 rounded-md bg-[#EE6C4D] px-6 py-3 text-sm font-medium text-white transition-colors duration-200 hover:bg-[#d95f43] active:scale-[0.98];
     }
     .btn-outline {
-        @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-white/60 hover:bg-white/10 active:scale-95;
+        @apply inline-flex items-center justify-center gap-2 rounded-md border border-black bg-white px-6 py-3 text-sm font-medium text-black transition-colors duration-200 hover:bg-black hover:text-white active:scale-[0.98];
     }
     .btn-gold {
-        @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-gold px-6 py-3 text-sm font-semibold text-brand-navy transition-all duration-200 hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/30 active:scale-95;
+        @apply inline-flex items-center justify-center gap-2 rounded-md bg-[#EE6C4D] px-6 py-3 text-sm font-medium text-white transition-colors duration-200 hover:bg-[#d95f43] active:scale-[0.98];
     }
     .section-heading {
-        @apply text-3xl md:text-4xl font-bold text-brand-dark leading-tight;
+        @apply text-2xl font-semibold text-black leading-tight;
     }
     .section-subheading {
-        @apply mt-3 max-w-2xl text-lg leading-8 text-slate-600;
+        @apply mt-3 max-w-2xl text-lg leading-8 text-black/70;
     }
     .card-feature {
-        @apply bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:border-brand-accent/20 transition-all duration-300;
+        @apply bg-white rounded-lg p-6 border border-black/10;
     }
     .tag-pill {
-        @apply inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase;
-    }
-    .gradient-text {
-        @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-accent to-brand-cyan;
+        @apply inline-block px-3 py-1 rounded-md text-xs font-medium tracking-wide uppercase;
     }
     .app-shell-bg {
         background-image:
@@ -81,16 +75,16 @@ body {
             linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
     }
     .app-surface {
-        @apply rounded-3xl border border-slate-200/80 bg-white/90 shadow-[0_24px_60px_-32px_rgba(10,22,40,0.28)] backdrop-blur;
+        @apply rounded-lg border border-black/10 bg-white;
     }
     .app-panel {
-        @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+        @apply rounded-lg border border-black/10 bg-white;
     }
     .app-table {
         @apply w-full text-sm text-left;
     }
     .app-table thead {
-        @apply bg-slate-50 text-slate-500 uppercase text-xs tracking-wide;
+        @apply bg-white text-black uppercase text-xs tracking-wide;
     }
     .app-table th {
         @apply px-4 py-3 font-semibold;
@@ -99,13 +93,13 @@ body {
         @apply px-4 py-3;
     }
     .app-table tbody {
-        @apply divide-y divide-slate-100;
+        @apply divide-y divide-black/10;
     }
     .input-field {
-        @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 shadow-sm outline-none transition focus:border-brand-accent focus:ring-4 focus:ring-brand-accent/10;
+        @apply w-full rounded-md border border-black/10 bg-white px-4 py-3 text-sm text-black placeholder:text-black/40 outline-none transition focus:border-[#EE6C4D] focus:ring-1 focus:ring-[#EE6C4D];
     }
     .label-text {
-        @apply mb-1.5 block text-sm font-medium text-slate-700;
+        @apply mb-1.5 block text-sm font-medium text-black;
     }
     .auth-shell {
         background-image:
@@ -129,83 +123,34 @@ body {
         @apply mt-3 max-w-2xl text-sm leading-6 text-slate-600 md:text-base;
     }
     .marketing-header-shell {
-        @apply rounded-full border px-4 backdrop-blur-xl;
-        box-shadow: 0 22px 54px -34px rgba(15, 23, 42, 0.45);
-        transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        @apply border-b border-black/10 bg-white px-4;
+        transition: border-color 0.2s ease;
     }
     .marketing-header-dark {
-        @apply border-white/10;
-        background-color: rgba(10, 22, 40, 0.72);
+        @apply border-black/10 bg-white;
     }
     .marketing-header-light {
-        @apply border-slate-200/90;
-        background-color: rgba(255, 255, 255, 0.96);
-        box-shadow: 0 22px 54px -34px rgba(15, 23, 42, 0.25);
+        @apply border-black/10 bg-white;
     }
     .marketing-nav-link {
-        @apply inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200;
+        @apply inline-flex items-center px-4 py-2 text-sm font-medium transition-colors duration-200;
     }
     .marketing-nav-link-dark {
-        @apply hover:bg-white/10 hover:text-white;
-        color: rgba(255, 255, 255, 0.82);
+        @apply text-black hover:text-[#EE6C4D];
     }
     .marketing-nav-link-light {
-        @apply text-slate-600 hover:bg-slate-100 hover:text-brand-dark;
+        @apply text-black hover:text-[#EE6C4D];
     }
-}
-
-/* Subtle grid overlay for hero */
-.hero-grid {
-    background-image:
-        linear-gradient(rgba(59,130,246,0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59,130,246,0.08) 1px, transparent 1px);
-    background-size: 48px 48px;
-}
-
-/* Glow orb effect */
-.orb {
-    border-radius: 9999px;
-    filter: blur(80px);
-    position: absolute;
-    pointer-events: none;
-}
-
-.hero-shell {
-    background-image:
-        radial-gradient(circle at top left, rgba(59, 130, 246, 0.2), transparent 28%),
-        radial-gradient(circle at bottom right, rgba(6, 182, 212, 0.12), transparent 24%),
-        linear-gradient(135deg, #08111f 0%, #102447 48%, #0b1729 100%);
-}
-
-.hero-frame {
-    @apply rounded-[32px] border backdrop-blur-md;
-    border-color: rgba(255, 255, 255, 0.12);
-    background-color: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 48px 140px -52px rgba(2, 8, 23, 0.8);
-}
-
-.hero-kicker {
-    @apply inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em];
-    border-color: rgba(255, 255, 255, 0.15);
-    background-color: rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.78);
-}
-
-.hero-data-card {
-    @apply rounded-[26px] border backdrop-blur-md;
-    border-color: rgba(255, 255, 255, 0.12);
-    background-color: rgba(2, 8, 23, 0.3);
-    box-shadow: 0 24px 80px -40px rgba(2, 8, 23, 0.7);
 }
 
 /* Skip-to-content accessibility link */
 .skip-to-content {
-    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[9999] focus:rounded-lg focus:bg-brand-accent focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg;
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[9999] focus:rounded-md focus:bg-[#EE6C4D] focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white;
 }
 
 /* Global focus ring */
 :focus-visible {
-    outline: 2px solid #3B82F6;
+    outline: 2px solid #EE6C4D;
     outline-offset: 2px;
 }
 

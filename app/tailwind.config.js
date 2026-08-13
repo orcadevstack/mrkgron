@@ -22,20 +22,27 @@ module.exports = {
           900: "#1e3a8a",
         },
         brand: {
-          navy:   "#0A1628",
-          dark:   "#0F172A",
-          blue:   "#1E3A8A",
-          accent: "#3B82F6",
-          indigo: "#4F46E5",
-          gold:   "#F59E0B",
-          cyan:   "#06B6D4",
-          light:  "#F0F7FF",
+          navy:   "#000000",
+          dark:   "#000000",
+          blue:   "#000000",
+          accent: "#EE6C4D",
+          indigo: "#000000",
+          gold:   "#EE6C4D",
+          cyan:   "#000000",
+          light:  "#FFFFFF",
+        },
+        // Enterprise palette
+        enterprise: {
+          navy:  "#0A1A2F",
+          blue:  "#1F6FEB",
+          gold:  "#F5C542",
+          slate: "#2E3A45",
         },
       },
       fontFamily: {
-        sans: ["IBM Plex Sans", "system-ui", "sans-serif"],
-        display: ["IBM Plex Sans", "system-ui", "sans-serif"],
-        mono: ["IBM Plex Mono", "ui-monospace", "monospace"],
+        sans: ["Inter", "SF Pro Display", "system-ui", "sans-serif"],
+        display: ["Inter", "SF Pro Display", "system-ui", "sans-serif"],
+        mono: ["Inter", "SF Pro Display", "system-ui", "sans-serif"],
       },
       backgroundImage: {
         "hero-gradient":
@@ -52,6 +59,7 @@ module.exports = {
         "fade-in":    "fadeIn 0.5s ease-out forwards",
         "slide-left": "slideLeft 0.6s ease-out forwards",
         "pulse-glow": "pulseGlow 2s ease-in-out infinite",
+        "ticker":     "ticker 38s linear infinite",
       },
       keyframes: {
         fadeUp: {
@@ -69,6 +77,10 @@ module.exports = {
         pulseGlow: {
           "0%, 100%": { boxShadow: "0 0 20px rgba(59,130,246,0.3)" },
           "50%":      { boxShadow: "0 0 40px rgba(59,130,246,0.6)" },
+        },
+        ticker: {
+          "0%":   { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
     },

@@ -91,7 +91,7 @@ export default function Footer() {
                 className="flex items-center gap-2 text-sm text-white/55 hover:text-white transition-colors"
               >
                 <Phone size={14} className="text-brand-accent" />
-                +1-800-LIZ-CMRT
+                +1-800-MRKGRON
               </a>
               <p className="flex items-start gap-2 text-sm text-white/55">
                 <MapPin size={14} className="text-brand-accent mt-0.5 shrink-0" />

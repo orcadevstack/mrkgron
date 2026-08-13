@@ -50,7 +50,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  const isLightSurface = isSolid || menuOpen;
+  const isLightSurface = true;
 
   return (
     <header
@@ -60,7 +60,7 @@ export default function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
         <div className={`marketing-header-shell ${isLightSurface ? "marketing-header-light" : "marketing-header-dark"}`}>
-          <div className="flex h-[72px] items-center justify-between gap-4">
+          <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo */}
             <BrandLogo tone={isLightSurface ? "dark" : "light"} size="md" className="shrink-0" />
 
@@ -81,9 +81,7 @@ export default function Navbar() {
             <div className="hidden items-center gap-3 md:flex">
             <Link
               href="/login"
-              className={`px-4 py-2 text-sm font-medium transition-colors ${
-                isLightSurface ? "text-slate-600 hover:text-brand-dark" : "text-white/82 hover:text-white"
-              }`}
+              className="px-4 py-2 text-sm font-medium text-black transition-colors hover:text-[#EE6C4D]"
             >
               Login
             </Link>
@@ -98,11 +96,7 @@ export default function Navbar() {
           {/* Mobile Toggle */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className={`rounded-full p-2.5 transition-colors md:hidden ${
-                isLightSurface
-                  ? "text-slate-700 hover:bg-slate-100 hover:text-brand-dark"
-                  : "text-white/85 hover:bg-white/10 hover:text-white"
-              }`}
+              className="rounded-md p-2.5 text-black transition-colors hover:text-[#EE6C4D] md:hidden"
               aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"

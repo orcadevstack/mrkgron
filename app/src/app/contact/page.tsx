@@ -219,7 +219,7 @@ export default function ContactPage() {
                     <div>
                       <p className="text-xs text-slate-400 uppercase tracking-wide">Phone</p>
                       <p className="font-semibold text-brand-dark group-hover:text-brand-accent transition-colors">
-                        +1-800-LIZ-CMRT
+                        +1-800-MRKGRON
                       </p>
                     </div>
                   </a>

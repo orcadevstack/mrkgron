@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ShieldCheck, Sparkles } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 
 type AuthShellProps = {
@@ -17,31 +17,27 @@ const highlights = [
 
 export function AuthShell({ title, subtitle, children, footer }: AuthShellProps) {
   return (
-    <div className="auth-shell min-h-screen px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mx-auto grid min-h-[calc(100vh-4rem)] max-w-6xl overflow-hidden auth-card lg:grid-cols-[1.1fr_0.9fr]">
-        <aside className="relative hidden overflow-hidden bg-hero-gradient p-10 lg:p-12 text-white lg:flex lg:flex-col lg:justify-between">
-          <div className="orb -left-14 top-10 h-56 w-56 bg-brand-accent/25" />
-          <div className="orb bottom-0 right-0 h-72 w-72 bg-brand-gold/10" />
-          <div className="relative z-10">
-            <BrandLogo tone="light" size="lg" />
-            <p className="mt-8 page-eyebrow border-white/20 bg-white/10 text-white/80">
-              Platform Access
-            </p>
-            <h1 className="mt-4 max-w-md text-3xl font-bold leading-snug tracking-[-0.02em]">
+    <div className="min-h-screen bg-white px-4 py-8 sm:px-6 lg:px-8">
+      <div className="mx-auto grid min-h-[calc(100vh-4rem)] max-w-6xl overflow-hidden border border-black/10 bg-white lg:grid-cols-[1.1fr_0.9fr]">
+        <aside className="hidden border-r border-black/10 p-12 lg:flex lg:flex-col lg:justify-between">
+          <div>
+            <BrandLogo size="lg" />
+            <p className="mt-8 text-sm font-medium text-[#EE6C4D]">Platform access</p>
+            <h1 className="mt-4 max-w-md text-3xl font-semibold leading-snug text-black">
               {title}
             </h1>
-            <p className="mt-3 max-w-md text-sm leading-6 text-white/65">
+            <p className="mt-3 max-w-md text-sm leading-6 text-black">
               {subtitle}
             </p>
           </div>
-          <div className="relative z-10 grid gap-4">
+          <div className="grid gap-4">
             {highlights.map((item, index) => (
-              <div key={item} className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
-                <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-brand-gold">
-                  {index === 0 ? <ShieldCheck size={16} /> : <Sparkles size={16} />}
+              <div key={item} className="border-l-2 border-[#EE6C4D] pl-4">
+                <div className="mb-2 flex items-center gap-2 text-sm font-medium text-black">
+                  <ShieldCheck size={16} />
                   Mrkgron Standard
                 </div>
-                <p className="text-sm leading-6 text-white/75">{item}</p>
+                <p className="text-sm leading-6 text-black">{item}</p>
               </div>
             ))}
           </div>
@@ -51,13 +47,13 @@ export function AuthShell({ title, subtitle, children, footer }: AuthShellProps)
           <div className="w-full max-w-md">
             <BrandLogo size="sm" className="mb-6 lg:hidden" />
             <div className="mb-6 lg:hidden">
-              <h1 className="text-2xl font-bold tracking-tight text-brand-dark">{title}</h1>
-              <p className="mt-2 text-sm leading-6 text-slate-500">{subtitle}</p>
+              <h1 className="text-2xl font-semibold text-black">{title}</h1>
+              <p className="mt-2 text-sm leading-6 text-black">{subtitle}</p>
             </div>
             <div className="app-panel p-6 sm:p-8">
               {children}
             </div>
-            <div className="mt-4 text-center text-sm text-slate-400">{footer}</div>
+            <div className="mt-4 text-center text-sm text-black">{footer}</div>
           </div>
         </section>
       </div>

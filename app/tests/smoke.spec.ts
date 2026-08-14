@@ -60,6 +60,21 @@ test.describe("Homepage", () => {
   });
 });
 
+test.describe("Wiki", () => {
+  test("renders the documentation hub and search", async ({ page }) => {
+    await page.goto("/wiki");
+    await expect(page.getByRole("heading", { name: "Official product documentation" })).toBeVisible();
+    await expect(page.getByRole("searchbox", { name: "Search documentation" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Developer Documentation" }).first()).toBeVisible();
+  });
+
+  test("renders deep-linked developer documentation", async ({ page }) => {
+    await page.goto("/wiki/developer");
+    await expect(page.getByRole("heading", { name: "Developer Documentation" })).toBeVisible();
+    await expect(page.getByText("Authorization: Bearer <access-token>")).toBeVisible();
+  });
+});
+
 test.describe("Navigation", () => {
   test("navbar links all resolve (no 404)", async ({ page }) => {
     const routes = ["/features", "/solutions", "/pricing", "/about", "/resources", "/contact"];

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 
 const footerLinks = [
@@ -13,57 +13,48 @@ const footerLinks = [
 const socialLinks = [
   { label: "LinkedIn", href: "https://www.linkedin.com", icon: Linkedin },
   { label: "Instagram", href: "https://www.instagram.com", icon: Instagram },
-  { label: "Facebook", href: "https://www.facebook.com", icon: Facebook },
   { label: "X", href: "https://x.com", icon: Twitter },
+  { label: "YouTube", href: "https://www.youtube.com", icon: Youtube },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[1fr_auto] lg:px-8">
-        <div>
-          <BrandLogo tone="light" size="sm" />
-          <p className="mt-4 max-w-md text-sm leading-6 text-white">
+    <footer className="min-h-[240px] border-t border-black/10 bg-white text-black">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-6 py-8 md:grid-cols-12 md:items-start">
+        <div className="md:col-span-3">
+          <BrandLogo tone="dark" size="sm" />
+          <p className="mt-4 max-w-xs text-sm font-normal leading-6 text-black">
             Institutional intelligence for accountable financial and operational decisions.
           </p>
-          <div className="mt-6 flex items-center gap-4" aria-label="Social media">
-            {socialLinks.map(({ label, href, icon: Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={label}
-                className="text-white transition-opacity hover:opacity-60 active:opacity-80"
-              >
-                <Icon size={20} strokeWidth={1.5} />
-              </a>
-            ))}
-            <a
-              href="https://www.tiktok.com"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="TikTok"
-              className="text-white transition-opacity hover:opacity-60 active:opacity-80"
-            >
-              <img src="https://cdn.simpleicons.org/tiktok/FFFFFF" alt="" width="20" height="20" />
-            </a>
-          </div>
         </div>
-        <nav className="flex flex-wrap gap-x-6 gap-y-3 text-sm" aria-label="Footer navigation">
+        <nav className="flex flex-wrap justify-start gap-x-4 gap-y-4 text-sm font-normal md:col-span-6 md:justify-center" aria-label="Footer navigation">
           {footerLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="font-medium text-white transition-colors hover:text-[#EE6C4D]">
+            <Link key={link.href} href={link.href} className="text-black transition-opacity hover:opacity-80">
               {link.label}
             </Link>
           ))}
         </nav>
+        <div className="flex items-center justify-start gap-3 md:col-span-3 md:justify-end" aria-label="Social media">
+          {socialLinks.map(({ label, href, icon: Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={label}
+              className="text-black transition-opacity hover:opacity-80"
+            >
+              <Icon size={20} strokeWidth={1.5} />
+            </a>
+          ))}
+        </div>
       </div>
-      <div className="border-t border-white/20">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <div className="border-t border-black/10">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm font-normal sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Mrkgron. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-[#EE6C4D]">Privacy</Link>
-            <Link href="/terms" className="hover:text-[#EE6C4D]">Terms</Link>
+          <div className="flex gap-4">
+            <Link href="/privacy" className="transition-opacity hover:opacity-80">Privacy</Link>
+            <Link href="/terms" className="transition-opacity hover:opacity-80">Terms</Link>
           </div>
         </div>
       </div>

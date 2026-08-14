@@ -49,8 +49,7 @@ test.describe("Homepage", () => {
     await expect(footer.getByRole("link", { name: /features/i })).toBeVisible();
     await expect(footer.getByRole("link", { name: "LinkedIn" })).toHaveAttribute("href", "https://www.linkedin.com");
     await expect(footer.getByRole("link", { name: "Instagram" })).toHaveAttribute("href", "https://www.instagram.com");
-    await expect(footer.getByRole("link", { name: "TikTok" })).toHaveAttribute("href", "https://www.tiktok.com");
-    await expect(footer.getByRole("link", { name: "Facebook" })).toHaveAttribute("href", "https://www.facebook.com");
+    await expect(footer.getByRole("link", { name: "YouTube" })).toHaveAttribute("href", "https://www.youtube.com");
     await expect(footer.getByRole("link", { name: "X" })).toHaveAttribute("href", "https://x.com");
   });
 });
@@ -79,11 +78,14 @@ test.describe("Navigation", () => {
     await expect(page.getByRole("button", { name: /open navigation menu/i })).toBeVisible();
   });
 
-  test("wide header keeps social links in the footer", async ({ page }) => {
+  test("wide header exposes approved social links", async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto("/");
-    await expect(page.locator("header").getByRole("link", { name: "LinkedIn" })).toHaveCount(0);
-    await expect(page.locator("header").getByRole("link", { name: "X" })).toHaveCount(0);
+    const header = page.locator("header");
+    await expect(header.getByRole("link", { name: "LinkedIn" })).toHaveAttribute("href", "https://www.linkedin.com");
+    await expect(header.getByRole("link", { name: "Instagram" })).toHaveAttribute("href", "https://www.instagram.com");
+    await expect(header.getByRole("link", { name: "YouTube" })).toHaveAttribute("href", "https://www.youtube.com");
+    await expect(header.getByRole("link", { name: "X" })).toHaveAttribute("href", "https://x.com");
   });
 });
 

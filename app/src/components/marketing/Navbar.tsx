@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Instagram, Linkedin, Menu, Twitter, X, Youtube } from "lucide-react";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 
 const navLinks = [
@@ -15,22 +16,30 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
+const socialLinks = [
+  { label: "LinkedIn", href: "https://www.linkedin.com", icon: Linkedin },
+  { label: "X", href: "https://x.com", icon: Twitter },
+  { label: "Instagram", href: "https://www.instagram.com", icon: Instagram },
+  { label: "YouTube", href: "https://www.youtube.com", icon: Youtube },
+];
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6">
         <div className="marketing-header-shell">
-          <div className="grid h-16 grid-cols-[1fr_auto_1fr] items-center lg:h-[72px] xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
+          <div className="grid h-[72px] grid-cols-[1fr_auto_1fr] items-center xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
             <BrandLogo tone="dark" size="md" className="justify-self-center xl:justify-self-start" />
 
-            <nav className="hidden items-center justify-self-center xl:flex" aria-label="Primary navigation">
+            <nav className="hidden items-center justify-self-center gap-4 xl:flex" aria-label="Primary navigation">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="marketing-nav-link marketing-nav-link-light"
+                  className={`marketing-nav-link ${pathname === link.href ? "marketing-nav-link-active" : ""}`}
                 >
                   {link.label}
                 </Link>
@@ -39,13 +48,25 @@ export default function Navbar() {
 
             <div className="hidden items-center justify-self-end xl:flex">
               <div className="flex items-center gap-3">
+                {socialLinks.map(({ label, href, icon: Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={label}
+                    className="text-black transition-opacity hover:opacity-80"
+                  >
+                    <Icon size={20} strokeWidth={1.5} />
+                  </a>
+                ))}
                 <Link
                   href="/login"
-                  className="px-4 py-3 text-sm font-medium text-black transition-colors hover:text-[#EE6C4D]"
+                  className="px-6 py-3 text-base font-medium text-black transition-opacity hover:opacity-80"
                 >
                   Login
                 </Link>
-                <Link href="/register" className="btn-primary text-sm">
+                <Link href="/register" className="btn-primary text-base">
                   Start Free Trial
                 </Link>
               </div>
@@ -66,7 +87,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div id="mobile-nav" className="mx-auto mt-3 max-w-7xl px-4 sm:px-6 lg:px-8 xl:hidden">
+        <div id="mobile-nav" className="mx-auto max-w-7xl px-6 xl:hidden">
           <div className="overflow-hidden border border-black/10 bg-white">
             <div className="space-y-1 px-4 py-4">
             {navLinks.map((link) => (
@@ -74,7 +95,9 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="block border-l-2 border-transparent px-4 py-3 text-sm font-medium text-black transition-colors hover:border-[#EE6C4D]"
+                className={`block border-l-2 px-4 py-3 text-base font-medium text-black transition-opacity hover:opacity-80 ${
+                  pathname === link.href ? "border-[#EE6C4D]" : "border-transparent"
+                }`}
               >
                 {link.label}
               </Link>
@@ -83,7 +106,7 @@ export default function Navbar() {
               <Link
                 href="/login"
                 onClick={() => setMenuOpen(false)}
-                className="block px-4 py-3 text-center text-sm font-medium text-black transition-colors hover:text-[#EE6C4D]"
+                className="block px-6 py-3 text-center text-base font-medium text-black transition-opacity hover:opacity-80"
               >
                 Login
               </Link>
@@ -94,6 +117,20 @@ export default function Navbar() {
               >
                 Start Free Trial
               </Link>
+              </div>
+              <div className="flex items-center gap-3 border-t border-black/10 pt-3" aria-label="Social media">
+                {socialLinks.map(({ label, href, icon: Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={label}
+                    className="text-black transition-opacity hover:opacity-80"
+                  >
+                    <Icon size={20} strokeWidth={1.5} />
+                  </a>
+                ))}
               </div>
             </div>
           </div>

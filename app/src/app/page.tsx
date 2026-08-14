@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BarChart3, Database, ShieldCheck, Workflow } from "lucide-react";
+import { ArrowRight, BarChart3, Check, Database, Radio, ShieldCheck, Workflow } from "lucide-react";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
 
@@ -89,6 +89,48 @@ function HeroSection() {
   );
 }
 
+function TwilioIntegrationSignal() {
+  return (
+    <section className="border-b border-black/10 bg-white py-12">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_1fr] lg:px-8">
+        <div>
+          <p className="text-sm font-medium text-[#EE6C4D]">COMMUNICATIONS INTEGRATION</p>
+          <h2 className="mt-4 text-2xl font-semibold text-black">Twilio SMS delivery, governed in one operating record.</h2>
+          <p className="mt-4 max-w-xl text-base leading-7 text-black">
+            Route approved customer communications through Twilio while retaining delivery status,
+            consent, and operational context in Mrkgron.
+          </p>
+        </div>
+        <div className="border border-black/10 bg-white p-4 sm:p-6" aria-label="Twilio delivery activity">
+          <div className="flex items-center justify-between border-b border-black/10 pb-4">
+            <div className="flex items-center gap-3">
+              <Radio size={20} strokeWidth={1.5} className="text-[#EE6C4D]" />
+              <div>
+                <p className="text-base font-medium text-black">Twilio SMS delivery</p>
+                <p className="mt-1 text-sm text-black">Live communications signal</p>
+              </div>
+            </div>
+            <span className="border border-[#EE6C4D] px-3 py-2 text-sm font-medium text-black">Connected</span>
+          </div>
+          <div className="integration-flow mt-4 border border-black/10 p-4">
+            <div className="flex items-center justify-between gap-4">
+              <p className="text-sm font-medium text-black">Consent-approved message</p>
+              <Check size={20} strokeWidth={1.5} className="shrink-0 text-[#EE6C4D]" />
+            </div>
+            <div className="mt-4 h-px overflow-hidden bg-black/10">
+              <div className="integration-flow-signal h-full bg-[#EE6C4D]" />
+            </div>
+            <div className="mt-4 flex items-center justify-between gap-4 text-sm text-black">
+              <span>Queued by Mrkgron</span>
+              <span>Delivery confirmed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export const metadata = {
   title: "Mrkgron | Executive Intelligence Platform",
   description: "The institutional operating system for informed financial decisions.",
@@ -101,6 +143,7 @@ export default function HomePage() {
       <main id="main-content">
         <HeroSection />
         <section className="border-b border-black/10 bg-black py-6 text-white"><div className="mx-auto grid max-w-7xl gap-4 px-4 text-sm sm:grid-cols-3 sm:px-6 lg:px-8"><p>Institutional reporting</p><p>Enterprise governance</p><p>Operational intelligence</p></div></section>
+        <TwilioIntegrationSignal />
         <section className="py-12 sm:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl"><p className="text-sm font-medium text-[#EE6C4D]">THE PLATFORM</p><h2 className="mt-4 text-2xl font-semibold text-black">Built for the discipline of modern operations.</h2><p className="mt-4 text-base leading-7 text-black">A consistent system for seeing the business clearly, governing its data, and acting with confidence.</p></div>

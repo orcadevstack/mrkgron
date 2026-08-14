@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { Instagram, Linkedin, Menu, Twitter, X, Youtube } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 
 const navLinks = [
@@ -14,13 +14,6 @@ const navLinks = [
   { label: "About", href: "/about" },
   { label: "Resources", href: "/resources" },
   { label: "Contact", href: "/contact" },
-];
-
-const socialLinks = [
-  { label: "LinkedIn", href: "https://www.linkedin.com", icon: Linkedin },
-  { label: "X", href: "https://x.com", icon: Twitter },
-  { label: "Instagram", href: "https://www.instagram.com", icon: Instagram },
-  { label: "YouTube", href: "https://www.youtube.com", icon: Youtube },
 ];
 
 export default function Navbar() {
@@ -48,18 +41,6 @@ export default function Navbar() {
 
             <div className="hidden items-center justify-self-end xl:flex">
               <div className="flex items-center gap-3">
-                {socialLinks.map(({ label, href, icon: Icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={label}
-                    className="text-black transition-opacity hover:opacity-80"
-                  >
-                    <Icon size={20} strokeWidth={1.5} />
-                  </a>
-                ))}
                 <Link
                   href="/login"
                   className="px-6 py-3 text-base font-medium text-black transition-opacity hover:opacity-80"
@@ -117,20 +98,6 @@ export default function Navbar() {
               >
                 Start Free Trial
               </Link>
-              </div>
-              <div className="flex items-center gap-3 border-t border-black/10 pt-3" aria-label="Social media">
-                {socialLinks.map(({ label, href, icon: Icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={label}
-                    className="text-black transition-opacity hover:opacity-80"
-                  >
-                    <Icon size={20} strokeWidth={1.5} />
-                  </a>
-                ))}
               </div>
             </div>
           </div>

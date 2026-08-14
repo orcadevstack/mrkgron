@@ -42,6 +42,12 @@ test.describe("Homepage", () => {
     await expect(page.getByText("Execution with control")).toBeVisible();
   });
 
+  test("renders the Twilio communications integration signal", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.getByRole("heading", { name: /twilio sms delivery, governed in one operating record/i })).toBeVisible();
+    await expect(page.getByText("Delivery confirmed")).toBeVisible();
+  });
+
   test("footer is present with links", async ({ page }) => {
     await page.goto("/");
     const footer = page.getByRole("contentinfo");
@@ -78,14 +84,14 @@ test.describe("Navigation", () => {
     await expect(page.getByRole("button", { name: /open navigation menu/i })).toBeVisible();
   });
 
-  test("wide header exposes approved social links", async ({ page }) => {
+  test("wide header keeps social links in the footer", async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto("/");
     const header = page.locator("header");
-    await expect(header.getByRole("link", { name: "LinkedIn" })).toHaveAttribute("href", "https://www.linkedin.com");
-    await expect(header.getByRole("link", { name: "Instagram" })).toHaveAttribute("href", "https://www.instagram.com");
-    await expect(header.getByRole("link", { name: "YouTube" })).toHaveAttribute("href", "https://www.youtube.com");
-    await expect(header.getByRole("link", { name: "X" })).toHaveAttribute("href", "https://x.com");
+    await expect(header.getByRole("link", { name: "LinkedIn" })).toHaveCount(0);
+    await expect(header.getByRole("link", { name: "Instagram" })).toHaveCount(0);
+    await expect(header.getByRole("link", { name: "YouTube" })).toHaveCount(0);
+    await expect(header.getByRole("link", { name: "X" })).toHaveCount(0);
   });
 });
 

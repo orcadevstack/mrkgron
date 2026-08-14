@@ -9,6 +9,12 @@ export const metadata: Metadata = {
 };
 
 export default function WikiHomePage() {
+  const wikiCards = WIKI_SECTIONS.flatMap((section) => (
+    WIKI_PAGES
+      .filter((page) => page.section === section)
+      .map((page) => ({ ...page, section }))
+  ));
+
   return (
     <section className="bg-white py-12">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-6 lg:grid-cols-12">
@@ -31,9 +37,9 @@ export default function WikiHomePage() {
       </div>
       <div className="mx-auto mt-12 max-w-7xl px-6">
         <div className="grid grid-cols-1 border-l border-t border-black/10 md:grid-cols-2 lg:grid-cols-3">
-          {WIKI_SECTIONS.map((section) => WIKI_PAGES.filter((page) => page.section === section).map((page) => (
+          {wikiCards.map((page) => (
             <Link key={page.slug} href={`/wiki/${page.slug}`} className="border-b border-r border-black/10 p-6 hover:bg-black/[0.03]">
-              <p className="text-sm font-medium text-[#EE6C4D]">{section}</p>
+              <p className="text-sm font-medium text-[#EE6C4D]">{page.section}</p>
               <h2 className="mt-4 text-xl font-semibold text-black">{page.title}</h2>
               <p className="mt-3 text-base leading-7 text-black">{page.description}</p>
             </Link>

@@ -1,0 +1,24 @@
+name: Publish GitHub Wiki
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "app/src/content/wiki/**"
+      - "scripts/publish-github-wiki.sh"
+      - ".github/workflows/publish-wiki.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Publish native GitHub Wiki
+        env:
+          WIKI_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash scripts/publish-github-wiki.sh

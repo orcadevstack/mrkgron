@@ -118,7 +118,7 @@ body {
         @apply mt-3 max-w-2xl text-base leading-6 text-black;
     }
     .marketing-header-shell {
-        @apply border-b border-black/10 bg-white px-4;
+        @apply border-b border-black/10 bg-white;
         transition: border-color 0.2s ease;
     }
     .marketing-header-dark {

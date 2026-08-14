@@ -44,8 +44,14 @@ test.describe("Homepage", () => {
 
   test("footer is present with links", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("contentinfo")).toBeVisible();
-    await expect(page.getByRole("link", { name: /features/i }).first()).toBeVisible();
+    const footer = page.getByRole("contentinfo");
+    await expect(footer).toBeVisible();
+    await expect(footer.getByRole("link", { name: /features/i })).toBeVisible();
+    await expect(footer.getByRole("link", { name: "LinkedIn" })).toHaveAttribute("href", "https://www.linkedin.com");
+    await expect(footer.getByRole("link", { name: "Instagram" })).toHaveAttribute("href", "https://www.instagram.com");
+    await expect(footer.getByRole("link", { name: "TikTok" })).toHaveAttribute("href", "https://www.tiktok.com");
+    await expect(footer.getByRole("link", { name: "Facebook" })).toHaveAttribute("href", "https://www.facebook.com");
+    await expect(footer.getByRole("link", { name: "X" })).toHaveAttribute("href", "https://x.com");
   });
 });
 
@@ -71,6 +77,13 @@ test.describe("Navigation", () => {
     // Close it
     await page.getByRole("button", { name: /close navigation menu/i }).click();
     await expect(page.getByRole("button", { name: /open navigation menu/i })).toBeVisible();
+  });
+
+  test("wide header keeps social links in the footer", async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto("/");
+    await expect(page.locator("header").getByRole("link", { name: "LinkedIn" })).toHaveCount(0);
+    await expect(page.locator("header").getByRole("link", { name: "X" })).toHaveCount(0);
   });
 });
 

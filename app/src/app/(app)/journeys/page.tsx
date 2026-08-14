@@ -1,10 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import apiClient from "@/lib/api";
 import type { PaginatedResponse } from "@/types";
 import { Plus, Route, Play, Pause, Archive, Users, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { FilterProvider, useFilterValue } from "@/components/filters/FilterProvider";
+import { PremiumFilterTabs } from "@/components/filters/PremiumFilterTabs";
 
 interface Journey {
   id: string;
@@ -50,9 +52,19 @@ const triggerConfig: Record<string, { label: string; cls: string }> = {
   schedule:     { label: "Schedule",     cls: "bg-cyan-100 text-cyan-700" },
 };
 
-export default function JourneysPage() {
+const journeyFilterOptions = [
+  { label: "All journeys", value: "all" },
+  { label: "Active", value: "active" },
+  { label: "Draft", value: "draft" },
+  { label: "Paused", value: "paused" },
+  { label: "Archived", value: "archived" },
+] as const;
+
+type JourneyFilter = (typeof journeyFilterOptions)[number]["value"];
+
+function JourneysContent() {
   const [page, setPage] = useState(1);
-  const [statusFilter, setStatusFilter] = useState<string>("all");
+  const [statusFilter, setStatusFilter] = useFilterValue("journey-status", "all") as [JourneyFilter, (value: JourneyFilter) => void];
   const queryClient = useQueryClient();
 
   const { data, isLoading } = useQuery({
@@ -66,10 +78,11 @@ export default function JourneysPage() {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["journeys"] }),
   });
 
-  const filtered =
+  const filtered = useMemo(() => (
     statusFilter === "all"
       ? data?.results ?? []
-      : (data?.results ?? []).filter((j) => j.status === statusFilter);
+      : (data?.results ?? []).filter((journey) => journey.status === statusFilter)
+  ), [data?.results, statusFilter]);
 
   const totalPages = data ? Math.ceil(data.count / 25) : 1;
 
@@ -116,22 +129,12 @@ export default function JourneysPage() {
         </div>
       )}
 
-      {/* Filter tabs */}
-      <div className="flex gap-2 overflow-x-auto pb-1">
-        {["all", "active", "draft", "paused", "archived"].map((s) => (
-          <button
-            key={s}
-            onClick={() => setStatusFilter(s)}
-            className={`rounded-xl px-4 py-2 text-sm font-medium capitalize whitespace-nowrap transition ${
-              statusFilter === s
-                ? "bg-brand-accent text-white shadow"
-                : "border border-slate-200 text-slate-600 hover:bg-slate-50"
-            }`}
-          >
-            {s === "all" ? "All journeys" : s}
-          </button>
-        ))}
-      </div>
+      <PremiumFilterTabs
+        ariaLabel="Filter journeys by status"
+        options={journeyFilterOptions}
+        value={statusFilter}
+        onChange={setStatusFilter}
+      />
 
       {/* Journey cards */}
       {isLoading ? (
@@ -269,5 +272,13 @@ export default function JourneysPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function JourneysPage() {
+  return (
+    <FilterProvider initialValues={{ "journey-status": "all" }}>
+      <JourneysContent />
+    </FilterProvider>
   );
 }

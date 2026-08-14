@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 
@@ -17,86 +17,43 @@ const navLinks = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isSolid, setIsSolid] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const lastScrollY = useRef(0);
-
-  useEffect(() => {
-    const handler = () => {
-      const currentScrollY = window.scrollY;
-      const isScrollingDown = currentScrollY > lastScrollY.current;
-      const isPastThreshold = currentScrollY > 24;
-
-      if (!isPastThreshold) {
-        setIsVisible(true);
-        setIsSolid(false);
-        lastScrollY.current = currentScrollY;
-        return;
-      }
-
-      setIsSolid(true);
-
-      if (isScrollingDown) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-
-      lastScrollY.current = currentScrollY;
-    };
-
-    lastScrollY.current = window.scrollY;
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
-
-  const isLightSurface = true;
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-transform duration-300 ${
-        menuOpen || isVisible ? "translate-y-0" : "-translate-y-[115%]"
-      }`}
-    >
-      <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
-        <div className={`marketing-header-shell ${isLightSurface ? "marketing-header-light" : "marketing-header-dark"}`}>
-          <div className="flex h-16 items-center justify-between gap-4">
-          {/* Logo */}
-            <BrandLogo tone={isLightSurface ? "dark" : "light"} size="md" className="shrink-0" />
+    <header className="fixed inset-x-0 top-0 z-50 bg-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="marketing-header-shell">
+          <div className="grid h-16 grid-cols-[1fr_auto_1fr] items-center lg:h-[72px] xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
+            <BrandLogo tone="dark" size="md" className="justify-self-center xl:justify-self-start" />
 
-          {/* Desktop Nav */}
-            <nav className="hidden items-center gap-1 xl:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`marketing-nav-link ${isLightSurface ? "marketing-nav-link-light" : "marketing-nav-link-dark"}`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            <nav className="hidden items-center justify-self-center xl:flex" aria-label="Primary navigation">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="marketing-nav-link marketing-nav-link-light"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </nav>
 
-          {/* Desktop CTA */}
-            <div className="hidden items-center gap-3 xl:flex">
-            <Link
-              href="/login"
-              className="px-4 py-2 text-sm font-medium text-black transition-colors hover:text-[#EE6C4D]"
-            >
-              Login
-            </Link>
-            <Link
-              href="/register"
-              className="btn-primary text-sm px-5 py-2.5"
-            >
-              Start Free Trial
-            </Link>
+            <div className="hidden items-center justify-self-end xl:flex">
+              <div className="flex items-center gap-3">
+                <Link
+                  href="/login"
+                  className="px-4 py-3 text-sm font-medium text-black transition-colors hover:text-[#EE6C4D]"
+                >
+                  Login
+                </Link>
+                <Link href="/register" className="btn-primary text-sm">
+                  Start Free Trial
+                </Link>
+              </div>
             </div>
 
-          {/* Mobile Toggle */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="rounded-md p-2.5 text-black transition-colors hover:text-[#EE6C4D] xl:hidden"
+              className="justify-self-end rounded-md p-2.5 text-black transition-colors hover:text-[#EE6C4D] xl:hidden"
               aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"

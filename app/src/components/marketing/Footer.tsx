@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 
 const footerLinks = [
@@ -7,6 +8,13 @@ const footerLinks = [
   { label: "Pricing", href: "/pricing" },
   { label: "Resources", href: "/resources" },
   { label: "Contact", href: "/contact" },
+];
+
+const socialLinks = [
+  { label: "LinkedIn", href: "https://www.linkedin.com", icon: Linkedin },
+  { label: "Instagram", href: "https://www.instagram.com", icon: Instagram },
+  { label: "Facebook", href: "https://www.facebook.com", icon: Facebook },
+  { label: "X", href: "https://x.com", icon: Twitter },
 ];
 
 export default function Footer() {
@@ -18,6 +26,29 @@ export default function Footer() {
           <p className="mt-4 max-w-md text-sm leading-6 text-white">
             Institutional intelligence for accountable financial and operational decisions.
           </p>
+          <div className="mt-6 flex items-center gap-4" aria-label="Social media">
+            {socialLinks.map(({ label, href, icon: Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={label}
+                className="text-white transition-opacity hover:opacity-60 active:opacity-80"
+              >
+                <Icon size={20} strokeWidth={1.5} />
+              </a>
+            ))}
+            <a
+              href="https://www.tiktok.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="TikTok"
+              className="text-white transition-opacity hover:opacity-60 active:opacity-80"
+            >
+              <img src="https://cdn.simpleicons.org/tiktok/FFFFFF" alt="" width="20" height="20" />
+            </a>
+          </div>
         </div>
         <nav className="flex flex-wrap gap-x-6 gap-y-3 text-sm" aria-label="Footer navigation">
           {footerLinks.map((link) => (

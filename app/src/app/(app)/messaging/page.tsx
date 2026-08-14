@@ -1,9 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import apiClient from "@/lib/api";
 import type { PaginatedResponse } from "@/types";
 import { MessageSquare, Send, CheckCheck, Circle, Plus } from "lucide-react";
+import { FilterProvider, useFilterValue } from "@/components/filters/FilterProvider";
+import { PremiumFilterTabs } from "@/components/filters/PremiumFilterTabs";
 
 interface Thread {
   id: string;
@@ -50,11 +52,19 @@ const channelBadge: Record<string, string> = {
   push:     "bg-orange-100 text-orange-700",
 };
 
-export default function MessagingPage() {
+const threadFilterOptions = [
+  { label: "Open", value: "open" },
+  { label: "Closed", value: "closed" },
+  { label: "All", value: "all" },
+] as const;
+
+type ThreadFilter = (typeof threadFilterOptions)[number]["value"];
+
+function MessagingContent() {
   const [page, setPage] = useState(1);
   const [selectedThread, setSelectedThread] = useState<Thread | null>(null);
   const [replyText, setReplyText] = useState("");
-  const [filter, setFilter] = useState<"open" | "closed" | "all">("open");
+  const [filter, setFilter] = useFilterValue("thread-status", "open") as [ThreadFilter, (value: ThreadFilter) => void];
   const queryClient = useQueryClient();
 
   const { data: threadsData, isLoading: threadsLoading } = useQuery({
@@ -78,11 +88,11 @@ export default function MessagingPage() {
     },
   });
 
-  const filtered = (threadsData?.results ?? []).filter((t) => {
-    if (filter === "open") return t.is_open;
-    if (filter === "closed") return !t.is_open;
+  const filtered = useMemo(() => (threadsData?.results ?? []).filter((thread) => {
+    if (filter === "open") return thread.is_open;
+    if (filter === "closed") return !thread.is_open;
     return true;
-  });
+  }), [filter, threadsData?.results]);
 
   const totalPages = threadsData ? Math.ceil(threadsData.count / 25) : 1;
 
@@ -115,24 +125,18 @@ export default function MessagingPage() {
 
         {/* Thread list */}
         <div className="app-panel flex flex-col overflow-hidden">
-          {/* Filter */}
-          <div className="flex gap-1 border-b border-slate-100 px-4 py-3">
-            {(["open", "closed", "all"] as const).map((f) => (
-              <button
-                key={f}
-                onClick={() => setFilter(f)}
-                className={`rounded-lg px-3 py-1.5 text-xs font-semibold capitalize transition ${
-                  filter === f
-                    ? "bg-brand-accent text-white"
-                    : "text-slate-500 hover:bg-slate-100"
-                }`}
-              >
-                {f}
-              </button>
-            ))}
-            <span className="ml-auto flex items-center text-xs text-slate-400">
+          <div className="border-b border-black/10 px-4 py-3">
+            <div className="flex items-center gap-3">
+              <PremiumFilterTabs
+                ariaLabel="Filter threads by status"
+                options={threadFilterOptions}
+                value={filter}
+                onChange={setFilter}
+              />
+              <span className="ml-auto flex shrink-0 items-center text-xs text-black">
               {threadsData?.count ?? 0} threads
-            </span>
+              </span>
+            </div>
           </div>
 
           {/* List */}
@@ -304,5 +308,13 @@ export default function MessagingPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function MessagingPage() {
+  return (
+    <FilterProvider initialValues={{ "thread-status": "open" }}>
+      <MessagingContent />
+    </FilterProvider>
   );
 }
